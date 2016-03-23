@@ -3,12 +3,12 @@
 
     <solid android:color="@color/orange" />
 
-    <corners android:radius="24dp"/>
+    <corners android:radius="@dimen/image_size"/>
 
     <padding
-        android:bottom="6dp"
-        android:top="6dp"
-        android:left="12dp"
-        android:right="12dp" />
+        android:bottom="@dimen/image_padding"
+        android:top="@dimen/image_padding"
+        android:left="@dimen/text_size"
+        android:right="@dimen/text_size" />
 
 </shape>
