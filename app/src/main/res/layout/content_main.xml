@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.yalantis.starwars.TilesFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tiles_frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:sw_animationDuration="1500"
-    app:sw_numberOfTilesX="35">
+    app:sw_numberOfTilesX="35"
+    android:focusableInTouchMode="true">
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -22,65 +22,66 @@
             android:padding="@dimen/activity_padding"
             android:showDividers="middle">
 
-            <RelativeLayout style="@style/nested_layout_positioning">
+            <RelativeLayout style="@style/nested_layout_positioning"
+                android:layout_marginTop="0dp">
 
                 <TextView
                     style="@style/title"
                     android:layout_centerVertical="true"
-                    android:text="Комунальне" />
+                    android:text="@string/title" />
 
                 <TextView
                     style="@style/status"
                     android:layout_alignParentRight="true"
-                    android:text="В роботі" />
+                    android:text="@string/status" />
             </RelativeLayout>
 
             <RelativeLayout style="@style/nested_layout_positioning">
 
                 <TextView
                     style="@style/greyText"
-                    android:text="@string/asd" />
+                    android:text="@string/first" />
 
                 <TextView
                     style="@style/blackText"
                     android:layout_alignParentRight="true"
-                    android:text="@string/asd" />
+                    android:text="@string/first_a" />
             </RelativeLayout>
 
             <RelativeLayout style="@style/nested_layout_positioning">
 
                 <TextView
                     style="@style/greyText"
-                    android:text="@string/asd" />
+                    android:text="@string/second" />
 
                 <TextView
                     style="@style/blackText"
                     android:layout_alignParentRight="true"
-                    android:text="@string/asd" />
+                    android:text="@string/second_a" />
             </RelativeLayout>
 
             <RelativeLayout style="@style/nested_layout_positioning">
 
                 <TextView
                     style="@style/greyText"
-                    android:text="@string/asd" />
+                    android:text="@string/third" />
 
                 <TextView
                     style="@style/blackText"
                     android:layout_alignParentRight="true"
-                    android:text="@string/asd" />
+                    android:text="@string/third_a" />
             </RelativeLayout>
 
             <RelativeLayout style="@style/nested_layout_positioning">
 
                 <TextView
                     style="@style/greyText"
-                    android:text="@string/asd" />
+                    android:text="@string/fourth" />
 
                 <TextView
                     style="@style/blackText"
                     android:layout_alignParentRight="true"
-                    android:text="@string/asd" />
+                    android:text="@string/fourth_a" />
             </RelativeLayout>
 
 
@@ -90,8 +91,8 @@
 
                 <TextView
                     style="@style/blackText"
-                    android:layout_marginBottom="30dp"
-                    android:text="@string/asd" />
+                    android:paddingBottom="@dimen/nested_layout_margin"
+                    android:text="@string/description" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv"
