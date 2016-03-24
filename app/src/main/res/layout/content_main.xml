@@ -5,10 +5,10 @@
     android:id="@+id/tiles_frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:sw_animationDuration="1500"
-    app:sw_numberOfTilesX="35"
-    android:focusableInTouchMode="true">
+    app:sw_numberOfTilesX="35">
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -19,12 +19,12 @@
             android:layout_height="wrap_content"
             android:divider="@drawable/spacer"
             android:orientation="vertical"
-
             android:padding="@dimen/activity_padding"
             android:showDividers="middle">
 
-            <RelativeLayout style="@style/nested_layout_positioning"
-                android:layout_marginTop="@dimen/oneDp">
+            <RelativeLayout
+                style="@style/nested_layout_positioning"
+                android:layout_marginBottom="@dimen/nested_layout_margin">
 
                 <TextView
                     style="@style/title"
@@ -37,7 +37,10 @@
                     android:text="@string/status" />
             </RelativeLayout>
 
-            <RelativeLayout style="@style/nested_layout_positioning">
+            <RelativeLayout
+                style="@style/nested_layout_positioning"
+                android:layout_marginBottom="@dimen/nested_layout_margin"
+                android:layout_marginTop="@dimen/nested_layout_margin">
 
                 <TextView
                     style="@style/greyText"
@@ -49,7 +52,10 @@
                     android:text="@string/first_a" />
             </RelativeLayout>
 
-            <RelativeLayout style="@style/nested_layout_positioning">
+            <RelativeLayout
+                style="@style/nested_layout_positioning"
+                android:layout_marginBottom="@dimen/nested_layout_margin"
+                android:layout_marginTop="@dimen/nested_layout_margin">
 
                 <TextView
                     style="@style/greyText"
@@ -61,7 +67,10 @@
                     android:text="@string/second_a" />
             </RelativeLayout>
 
-            <RelativeLayout style="@style/nested_layout_positioning">
+            <RelativeLayout
+                style="@style/nested_layout_positioning"
+                android:layout_marginBottom="@dimen/nested_layout_margin"
+                android:layout_marginTop="@dimen/nested_layout_margin">
 
                 <TextView
                     style="@style/greyText"
@@ -73,7 +82,10 @@
                     android:text="@string/third_a" />
             </RelativeLayout>
 
-            <RelativeLayout style="@style/nested_layout_positioning">
+            <RelativeLayout
+                style="@style/nested_layout_positioning"
+                android:layout_marginBottom="@dimen/nested_layout_margin"
+                android:layout_marginTop="@dimen/nested_layout_margin">
 
                 <TextView
                     style="@style/greyText"
@@ -88,6 +100,8 @@
 
             <LinearLayout
                 style="@style/nested_layout_positioning"
+                android:layout_marginBottom="@dimen/nested_layout_margin"
+                android:layout_marginTop="@dimen/nested_layout_margin"
                 android:orientation="vertical">
 
                 <TextView
@@ -96,7 +110,7 @@
                     android:text="@string/description" />
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv"
+                    android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scrollbars="horizontal" />

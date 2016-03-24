@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder> {
     private Context mContext;
-    protected List<String> mImages;
+    private List<String> mImages;
 
     public RecyclerAdapter(Context context, List<String> images) {
         mContext = context;
