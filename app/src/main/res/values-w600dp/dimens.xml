@@ -8,4 +8,6 @@
     <dimen name="text_size">20sp</dimen>
     <dimen name="title_size">24dp</dimen>
     <dimen name="image_size">384dp</dimen>
+
+    <dimen name="status_height">12dp</dimen>
 </resources>

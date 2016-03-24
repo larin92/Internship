@@ -8,4 +8,6 @@
     <dimen name="title_size">16dp</dimen>
     <dimen name="image_size">256dp</dimen>
     <dimen name="oneDp">1dp</dimen>
+
+    <dimen name="status_height">8dp</dimen>
 </resources>

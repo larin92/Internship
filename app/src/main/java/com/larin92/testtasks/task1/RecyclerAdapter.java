@@ -15,7 +15,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.mHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder> {
     private Context mContext;
     protected List<String> mImages;
 
@@ -30,10 +30,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.mHolde
         return mImages.size();
     }
 
-    protected class mHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.image) ImageView mImageView;
+    protected class Holder extends RecyclerView.ViewHolder {
+        @Bind(R.id.image)
+        ImageView mImageView;
 
-        public mHolder(View v) {
+        public Holder(View v) {
             super(v);
             ButterKnife.bind(this, v);
         }
@@ -41,14 +42,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.mHolde
 
     // create new view
     @Override
-    public RecyclerAdapter.mHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.recycler_item, parent, false);
-        return new mHolder(v);
+        return new Holder(v);
     }
 
     // set the image in the newborn view
     @Override
-    public void onBindViewHolder(mHolder holder, int position) {
+    public void onBindViewHolder(Holder holder, int position) {
         // get the image from URL
         Glide
                 .with(mContext)
