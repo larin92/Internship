@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
      * there are few ways it could be useful and adds extra security,
      * but maybe it's just a weird idea and can be implemented by anyone who needs it.
      */
-    boolean flag = true;
+    boolean mFlag = true;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        if ((id == android.R.id.home) && flag) {
-            flag = false;
+        if ((id == android.R.id.home) && mFlag) {
+            mFlag = false;
             mTilesFrameLayout.startAnimation();
         }
 
