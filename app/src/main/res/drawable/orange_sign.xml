@@ -3,8 +3,9 @@
 
     <solid android:color="@color/orange" />
 
+    <!-- just to max it out -->
     <corners android:radius="@dimen/image_size"/>
-
+    <!--Maybe it doesn't make sense, but i made use of existing dependencies-->
     <padding
         android:bottom="@dimen/image_padding"
         android:top="@dimen/image_padding"

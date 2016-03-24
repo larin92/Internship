@@ -15,11 +15,11 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.mHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.mHolder> {
     private Context mContext;
     protected List<String> mImages;
 
-    public MyRecyclerAdapter(Context context, List<String> images) {
+    public RecyclerAdapter(Context context, List<String> images) {
         mContext = context;
         mImages = images;
     }
@@ -41,7 +41,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.mH
 
     // create new view
     @Override
-    public MyRecyclerAdapter.mHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerAdapter.mHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.recycler_item, parent, false);
         return new mHolder(v);
     }

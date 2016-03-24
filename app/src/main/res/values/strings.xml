@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Problem: Black Hole</string>
     <string name="action_settings">Settings</string>
-
+    <!--Strings names are like this due to not-referencing to any time/date info at Eng version.
+    It makes sense to orient by the number of the line(after title),
+    like third row of info - third, third_a-->
     <string name="title">Nature Physics</string>
     <string name="status">Published</string>
     <string name="first">Israeli scientists</string>

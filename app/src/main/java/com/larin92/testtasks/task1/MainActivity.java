@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         //sets up the Back Button
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //Studio says it may produce NPE
+        try{ getSupportActionBar().setDisplayHomeAsUpEnabled(true); }
+        catch(NullPointerException npe){ Log.e("NPE", "error:" + npe); }
 
         //populate our recyclerView
         populateRecycler();
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         getStringArray(R.array.urls)));
 
         mRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        MyRecyclerAdapter adapter = new MyRecyclerAdapter(this, mUrls);
+        RecyclerAdapter adapter = new RecyclerAdapter(this, mUrls);
         mRecycler.setAdapter(adapter);
     }
 
@@ -63,19 +66,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAnimationFinished() {
                 finish();
-                System.exit(0);
             }
         };
         mTilesFrameLayout.setOnAnimationFinishedListener(listener);
     }
 
     public void onClickToast(View view) {
+        //I know, it's hardcode, but it's only "cosmetic" stuff,
+        //haven't found a better way to do it
+        //excluding writing "bicycles" and making it even more weird
         String name = view.getClass().getSimpleName().replace("AppCompat", "");
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
-    }
-
-    public void onClickToastR(View view) {
-        Toast.makeText(this, "RecyclerView", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -85,7 +86,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //flag to avoid double-activating Star Wars animation
+    /** flag to avoid double-activating Star Wars animation.
+     *  Maybe I should suggest implementing this flag into the lib,
+     *  there are few ways it could be useful and adds extra security,
+     *  but maybe it's just a weird idea and can be implemented by anyone who needs it.
+    */
     boolean flag=true;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -93,9 +98,10 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        String settings_toast = item.getTitle()+" ("+item.getClass().getSimpleName()+")";
 
         if (id == R.id.action_settings) {
-            Toast.makeText(this, "action_settings", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, settings_toast, Toast.LENGTH_SHORT).show();
             return true;
         }
 
