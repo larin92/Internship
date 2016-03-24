@@ -3,7 +3,7 @@
     <string name="app_name">Проблема: відкритий люк</string>
     <string name="action_settings">Опції</string>
     <string name="description">Відкритий люк (біля рекламного щита), район поворота 18 та 19 трамваїв на проспект Миру з Донецького шоссе. Він якось дивно зіяє чорним. Вже декілька людей зникли. Мабуть це небезпечно.</string>
-    <!--Strings names are like this due to not-referencing to any time/date info at Eng version.
+    <!--Strings names are like this due to not-referring to any time/date info at Eng version.
     It makes sense to orient by the number of the line(after title),
     like third row of info - third, third_a-->
     <string name="first">Створено</string>

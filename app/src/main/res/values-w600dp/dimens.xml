@@ -3,7 +3,7 @@
      but i find it useful for myopic people -->
     <dimen name="activity_padding">16dp</dimen>
     <dimen name="nested_layout_margin">18dp</dimen>
-    <dimen name="image_padding">16dp</dimen>
+    <dimen name="image_padding">24dp</dimen>
 
     <dimen name="text_size">20sp</dimen>
     <dimen name="title_size">24dp</dimen>
