@@ -1,6 +1,6 @@
 # Task1
 Test Task #1
-
+<img src="./screenshots/screen1.png"> <img src="./screenshots/screen2.png">
 ####UI mistakes:
   <br /> - different spacers between elements (size,color)
   <br /> - AppName should make more sense
