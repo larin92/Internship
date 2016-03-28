@@ -1,6 +1,6 @@
 # Task1
-Test Task #1
-<img src="./screenshots/screen1.png" width="300"> <img src="./screenshots/screen2.png" width="300">
+
+<img src="./screenshots/screen1.png" width="300">   <img src="./screenshots/screem2.png" width="300">
 ####UI mistakes:
   <br /> - different spacers between elements (size,color)
   <br /> - AppName should make more sense
