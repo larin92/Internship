@@ -1,5 +1,6 @@
 package com.larin92.testtasks.task1;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,13 +29,16 @@ public class MainActivity extends AppCompatActivity {
     Toolbar mToolbar;
     @Bind(R.id.recycler)
     RecyclerView mRecycler;
-
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        //more funk
+        init_funk();
 
         //sets up the Back Button
         setSupportActionBar(mToolbar);
@@ -48,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
 
         //funky stuff
         starWars();
+    }
+
+    //more funk
+    private void init_funk() {
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.start);
+        mp.start();
+        mp.setLooping(true);
     }
 
     //populate our recyclerView
