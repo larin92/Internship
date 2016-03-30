@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         TilesFrameLayoutListener listener = new TilesFrameLayoutListener() {
             @Override
             public void onAnimationFinished() {
+                mp.stop();
                 finish();
             }
         };
