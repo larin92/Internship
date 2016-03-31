@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         //more funk
-        init_funk();
+        init_funk(); //[Comment] Bad method name. Don't use "_"
 
         //sets up the Back Button
         setSupportActionBar(mToolbar);
