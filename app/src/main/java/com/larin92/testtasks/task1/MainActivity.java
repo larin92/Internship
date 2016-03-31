@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         //more funk
-        init_funk(); //[Comment] Bad method name. Don't use "_"
+        initFunk(); //[Comment] Bad method name. Don't use "_"
+                    //Done!
 
         //sets up the Back Button
         setSupportActionBar(mToolbar);
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //more funk
-    private void init_funk() {
+    private void initFunk() {
         mp = MediaPlayer.create(getApplicationContext(), R.raw.start);
         mp.start();
         mp.setLooping(true);
