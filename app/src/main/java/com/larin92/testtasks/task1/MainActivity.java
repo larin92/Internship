@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-
         //more funk
         initFunk(); //[Comment] Bad method name. Don't use "_"
                     //Done!
