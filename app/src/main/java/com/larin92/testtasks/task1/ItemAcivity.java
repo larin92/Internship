@@ -21,7 +21,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity {
+public class ItemAcivity extends AppCompatActivity {
 
     @Bind(R.id.tiles_frame_layout)
     TilesFrameLayout mTilesFrameLayout;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.item_activity);
         ButterKnife.bind(this);
 
         //more funk
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         getStringArray(R.array.urls)));
 
         mRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        RecyclerAdapter adapter = new RecyclerAdapter(this, mUrls);
+        ItemRecyclerAdapter adapter = new ItemRecyclerAdapter(this, mUrls);
         mRecycler.setAdapter(adapter);
     }
 
