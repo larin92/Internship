@@ -1,4 +1,4 @@
-package com.larin92.testtasks.task1;
+package com.larin92.testtasks.internship.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.larin92.testtasks.internship.R;
 
 import java.util.List;
 
@@ -15,11 +16,11 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class ItemRecyclerAdapter extends RecyclerView.Adapter<ItemRecyclerAdapter.Holder> {
+public class ItemImageRecyclerAdapter extends RecyclerView.Adapter<ItemImageRecyclerAdapter.Holder> {
     private Context mContext;
     private List<String> mImages;
 
-    public ItemRecyclerAdapter(Context context, List<String> images) {
+    public ItemImageRecyclerAdapter(Context context, List<String> images) {
         mContext = context;
         mImages = images;
     }

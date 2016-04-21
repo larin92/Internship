@@ -1,124 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--I like how it looks, when inner activity area(w/o toolbar) crumbles apart-->
-<com.yalantis.starwars.TilesFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/tiles_frame_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:focusableInTouchMode="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    app:sw_animationDuration="1500"
-    app:sw_numberOfTilesX="35">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/spacer"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_padding"
+        android:showDividers="middle">
+
+        <RelativeLayout
+            style="@style/nested_layout_positioning"
+            android:layout_marginBottom="@dimen/nested_layout_margin">
+
+            <TextView
+                android:id="@+id/item_title"
+                style="@style/title"
+                android:layout_centerVertical="true"
+                android:text="@string/title" />
+
+            <TextView
+                android:id="@+id/item_status"
+                style="@style/status"
+                android:layout_alignParentRight="true"
+                android:text="@string/status0" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/nested_layout_positioning"
+            android:layout_marginBottom="@dimen/nested_layout_margin"
+            android:layout_marginTop="@dimen/nested_layout_margin">
+
+            <TextView
+                style="@style/greyText"
+                android:text="@string/first" />
+
+            <TextView
+                android:id="@+id/item_creation"
+                style="@style/blackText"
+                android:layout_alignParentRight="true"
+                android:text="@string/first_a" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/nested_layout_positioning"
+            android:layout_marginBottom="@dimen/nested_layout_margin"
+            android:layout_marginTop="@dimen/nested_layout_margin">
+
+            <TextView
+                style="@style/greyText"
+                android:text="@string/second" />
+
+            <TextView
+                android:id="@+id/item_registration"
+                style="@style/blackText"
+                android:layout_alignParentRight="true"
+                android:text="@string/second_a" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/nested_layout_positioning"
+            android:layout_marginBottom="@dimen/nested_layout_margin"
+            android:layout_marginTop="@dimen/nested_layout_margin">
+
+            <TextView
+                style="@style/greyText"
+                android:text="@string/third" />
+
+            <TextView
+                android:id="@+id/item_solveTo"
+                style="@style/blackText"
+                android:layout_alignParentRight="true"
+                android:text="@string/third_a" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/nested_layout_positioning"
+            android:layout_marginBottom="@dimen/nested_layout_margin"
+            android:layout_marginTop="@dimen/nested_layout_margin">
+
+            <TextView
+                style="@style/greyText"
+                android:text="@string/fourth" />
+
+            <TextView
+                android:id="@+id/item_responsible"
+                style="@style/blackText"
+                android:layout_alignParentRight="true"
+                android:text="@string/fourth_a" />
+        </RelativeLayout>
+
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@drawable/spacer"
-            android:orientation="vertical"
-            android:padding="@dimen/activity_padding"
-            android:showDividers="middle">
+            style="@style/nested_layout_positioning"
+            android:layout_marginBottom="@dimen/nested_layout_margin"
+            android:layout_marginTop="@dimen/nested_layout_margin"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                style="@style/nested_layout_positioning"
-                android:layout_marginBottom="@dimen/nested_layout_margin">
+            <TextView
+                android:id="@+id/item_description"
+                style="@style/blackText"
+                android:paddingBottom="@dimen/nested_layout_margin"
+                android:text="@string/description" />
 
-                <TextView
-                    style="@style/title"
-                    android:layout_centerVertical="true"
-                    android:text="@string/title" />
-
-                <TextView
-                    style="@style/status"
-                    android:layout_alignParentRight="true"
-                    android:text="@string/status" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                style="@style/nested_layout_positioning"
-                android:layout_marginBottom="@dimen/nested_layout_margin"
-                android:layout_marginTop="@dimen/nested_layout_margin">
-
-                <TextView
-                    style="@style/greyText"
-                    android:text="@string/first" />
-
-                <TextView
-                    style="@style/blackText"
-                    android:layout_alignParentRight="true"
-                    android:text="@string/first_a" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                style="@style/nested_layout_positioning"
-                android:layout_marginBottom="@dimen/nested_layout_margin"
-                android:layout_marginTop="@dimen/nested_layout_margin">
-
-                <TextView
-                    style="@style/greyText"
-                    android:text="@string/second" />
-
-                <TextView
-                    style="@style/blackText"
-                    android:layout_alignParentRight="true"
-                    android:text="@string/second_a" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                style="@style/nested_layout_positioning"
-                android:layout_marginBottom="@dimen/nested_layout_margin"
-                android:layout_marginTop="@dimen/nested_layout_margin">
-
-                <TextView
-                    style="@style/greyText"
-                    android:text="@string/third" />
-
-                <TextView
-                    style="@style/blackText"
-                    android:layout_alignParentRight="true"
-                    android:text="@string/third_a" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                style="@style/nested_layout_positioning"
-                android:layout_marginBottom="@dimen/nested_layout_margin"
-                android:layout_marginTop="@dimen/nested_layout_margin">
-
-                <TextView
-                    style="@style/greyText"
-                    android:text="@string/fourth" />
-
-                <TextView
-                    style="@style/blackText"
-                    android:layout_alignParentRight="true"
-                    android:text="@string/fourth_a" />
-            </RelativeLayout>
-
-
-            <LinearLayout
-                style="@style/nested_layout_positioning"
-                android:layout_marginBottom="@dimen/nested_layout_margin"
-                android:layout_marginTop="@dimen/nested_layout_margin"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/blackText"
-                    android:paddingBottom="@dimen/nested_layout_margin"
-                    android:text="@string/description" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbars="horizontal" />
-
-            </LinearLayout>
-
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_images"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="horizontal" />
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
 
-</com.yalantis.starwars.TilesFrameLayout>
+</ScrollView>
