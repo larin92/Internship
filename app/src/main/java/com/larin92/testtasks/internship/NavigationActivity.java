@@ -37,6 +37,8 @@ public class NavigationActivity extends AppCompatActivity
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        // i was thinking about customising it. it will look great with
+        // the app theme tho(communal services)
         pullToRefresh();
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

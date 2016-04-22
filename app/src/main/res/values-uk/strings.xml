@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Проблема: відкритий люк</string>
+    <string name="app_name">Internship</string>
     <string name="action_settings">Опції</string>
     <string name="description">Відкритий люк (біля рекламного щита), район поворота 18 та 19 трамваїв на проспект Миру з Донецького шоссе. Він якось дивно зіяє чорним. Вже декілька людей зникли. Мабуть це небезпечно.</string>
     <!--Strings names are like this due to not-referring to any time/date info at Eng version.

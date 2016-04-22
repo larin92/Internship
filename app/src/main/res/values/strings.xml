@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Problem: Black Hole</string>
+    <string name="app_name">Internship</string>
     <string name="action_settings">Settings</string>
     <!--Strings names are like this due to not-referring to any time/date info at Eng version.
     It makes sense to orient by the number of the line(after title),
@@ -9,11 +9,11 @@
     <string name="status1">solved</string>
     <string name="status2">waiting</string>
     <string name="statusWut">unclear</string>
-    <string name="first">Israeli scientists</string>
+    <string name="first">Created</string>
     <string name="first_a">created</string>
-    <string name="second">a “black hole“</string>
+    <string name="second">Registered“</string>
     <string name="second_a">in their lab</string>
-    <string name="third">to prove</string>
+    <string name="third">Solved</string>
     <string name="third_a">Hawking&#8242;s theory</string>
     <string name="fourth">it was black hole analog</string>
     <string name="fourth_a">that traps sound waves</string>

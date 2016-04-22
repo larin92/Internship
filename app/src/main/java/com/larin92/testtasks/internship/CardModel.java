@@ -31,10 +31,11 @@ public class CardModel implements Parcelable {
     int mDaysLeft;
     int mLikes;
     int mStatus;
+    String mTitle;
     List<String> mUrls;
     String mResponsible;
 
-    public CardModel(int id, String category, String description, String address, String dateCreated, String dateRegistered, String dateSolveTo, int likes, int status, List<String> urls, String responsible, int daysLeft) {
+    public CardModel(int id, String category, String description, String address, String dateCreated, String dateRegistered, String dateSolveTo, int likes, int status, List<String> urls, String responsible, int daysLeft, String title) {
         ID = id;
         mCategory = category;
         mDescription = description;
@@ -47,8 +48,8 @@ public class CardModel implements Parcelable {
         mUrls = urls;
         mResponsible = responsible;
         mDaysLeft = daysLeft;
+        mTitle = title;
     }
-
     private CardModel(Parcel in) {
         ID = in.readInt();
         mCategory = in.readString();
@@ -61,6 +62,15 @@ public class CardModel implements Parcelable {
         mStatus = in.readInt();
         mUrls = in.createStringArrayList();
         mResponsible = in.readString();
+        mTitle = in.readString();
+    }
+
+    public String getmTitle() {
+        return mTitle;
+    }
+
+    public void setmTitle(String mTitle) {
+        this.mTitle = mTitle;
     }
 
     @Override
@@ -81,6 +91,7 @@ public class CardModel implements Parcelable {
         dest.writeInt(mStatus);
         dest.writeStringList(mUrls);
         dest.writeString(mResponsible);
+        dest.writeString(mTitle);
     }
 
     public int getID() {

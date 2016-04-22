@@ -19,7 +19,7 @@
             android:layout_marginBottom="@dimen/nested_layout_margin">
 
             <TextView
-                android:id="@+id/item_title"
+                android:id="@+id/item_category"
                 style="@style/title"
                 android:layout_centerVertical="true"
                 android:text="@string/title" />

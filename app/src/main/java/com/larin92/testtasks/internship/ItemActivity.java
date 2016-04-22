@@ -39,8 +39,8 @@ public class ItemActivity extends AppCompatActivity {
     Toolbar mToolbar;
     @Bind(R.id.recycler_images)
     RecyclerView mRecycler;
-    @Bind(R.id.item_title)
-    TextView mTitle;
+    @Bind(R.id.item_category)
+    TextView mCategory;
     @Bind(R.id.item_status)
     TextView mStatus;
     @Bind(R.id.item_creation)
@@ -92,8 +92,10 @@ public class ItemActivity extends AppCompatActivity {
     private void receiveAndSetData() {
         CardModel cardModel = getIntent().getParcelableExtra(CardModel.Item);
         if (cardModel != null) {
-            mUrls = cardModel.mUrls;
-            mTitle.setText(cardModel.getmCategory());
+            if(cardModel.getmUrls() != null)
+                mUrls = cardModel.mUrls;
+            if(cardModel.getmCategory() != null)
+                mCategory.setText(cardModel.getmCategory());
             String status;
             switch (cardModel.getmStatus()) {
                 case 0:
@@ -109,11 +111,18 @@ public class ItemActivity extends AppCompatActivity {
                     status = getResources().getString(R.string.statusWut);
             }
             mStatus.setText(status);
-            mCreation.setText(cardModel.getmDateCreated());
-            mRegistration.setText(cardModel.getmDateRegistered());
-            mSolveTo.setText(cardModel.getmDateSolveTo());
-            mResponsible.setText(cardModel.getmResponsible());
-            mDescription.setText(cardModel.getmDescription());
+            if(cardModel.getmTitle() != null)
+                this.setTitle(cardModel.getmTitle());
+            if(cardModel.getmDateCreated() != null)
+                mCreation.setText(cardModel.getmDateCreated());
+            if(cardModel.getmDateRegistered() != null)
+                mRegistration.setText(cardModel.getmDateRegistered());
+            if(cardModel.getmDateSolveTo() != null)
+                mSolveTo.setText(cardModel.getmDateSolveTo());
+            if(cardModel.getmResponsible() != null)
+                mResponsible.setText(cardModel.getmResponsible());
+            if(cardModel.getmDescription() != null)
+                mDescription.setText(cardModel.getmDescription());
         }
     }
 
