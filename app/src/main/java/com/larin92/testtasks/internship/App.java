@@ -76,7 +76,7 @@ public class App extends Application {
                     urls = urls1;
                     category = "Black Hole";
                     description = context.getString(R.string.description);
-                    cardModel = new CardModel(ID, category, description, "улица Пушкина, дом Колотушкина", "Someday, when Earth didn't even existed", "a long long time ago", "nobody solved it", i, status, urls, "The Creator", 14, title + ": Part 1");
+                    cardModel = new CardModel(ID, category, description, "улица Пушкина, дом Колотушкина", "Someday", "a long long time ago", "nobody solved it", i, status, urls, "The Creator", 14, title + ": Part 1");
                     break;
                 case 1:
                     urls = urls2;
