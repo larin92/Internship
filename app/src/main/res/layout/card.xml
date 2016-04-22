@@ -6,85 +6,84 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/card_height"
     android:layout_marginBottom="@dimen/card_margin"
-    app:cardCornerRadius="8dp"
-    >
+    app:cardCornerRadius="@dimen/card_margin">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ImageView
+            android:id="@+id/card_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/card_category"
-            android:src="@drawable/ic_business"
-            android:layout_marginTop="@dimen/text_margin"
-            android:layout_marginLeft="@dimen/card_icon_margin"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true" />
+            android:layout_marginLeft="@dimen/card_icon_margin"
+            android:layout_marginTop="@dimen/text_margin"
+            android:src="@drawable/ic_business" />
 
         <Button
+            android:id="@+id/like"
             android:layout_width="@dimen/card_bottom_margin"
             android:layout_height="@dimen/card_bottom_margin"
-            android:id="@+id/like"
-            android:background="@drawable/ic_like"
-            android:backgroundTint="@color/grey"
-            android:layout_marginLeft="@dimen/card_bottom_margin"
-            android:layout_marginBottom="@dimen/card_bottom_margin"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="@dimen/card_bottom_margin"
+            android:layout_marginLeft="@dimen/card_bottom_margin"
+            android:background="@drawable/ic_like" />
 
         <TextView
             android:id="@+id/like_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/card_margin"
-            android:layout_marginBottom="@dimen/card_bottom_margin"
-            android:textColor="@color/grey"
-            tools:text="123"
-            android:textStyle="bold"
             android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/like" />
+            android:layout_marginBottom="@dimen/card_bottom_margin"
+            android:layout_marginLeft="@dimen/card_margin"
+            android:layout_toRightOf="@+id/like"
+            android:textColor="@color/grey"
+            android:textStyle="bold"
+            tools:text="123" />
 
         <View
             android:id="@+id/divider"
             android:layout_width="@dimen/oneDp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="@dimen/card_divider_margin"
             android:background="@color/spacer" />
-        
+
         <TextView
             android:id="@+id/card_description"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/card_desc_height"
-            android:layout_toRightOf="@id/divider"
             android:layout_alignParentTop="true"
-            tools:text="1231asdasdasd54454455412312453544353453dasdasdas"
-            android:textSize="16sp"
             android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginRight="@dimen/text_margin"
             android:layout_marginTop="@dimen/text_margin"
-            android:layout_marginRight="@dimen/text_margin" />
+            android:layout_toRightOf="@id/divider"
+            android:ellipsize="end"
+            android:textSize="@dimen/description_size"
+            tools:text="1231asdasdasd54454455412312453544353453dasdasdas" />
 
         <TextView
             android:id="@+id/card_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/divider"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginBottom="@dimen/card_address_margin"
-            tools:text="улица Пушкина, дом Колотушкина"/>
+            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_toRightOf="@id/divider"
+            android:ellipsize="end"
+            tools:text="улица Пушкина, дом Колотушкина" />
 
         <TextView
             android:id="@+id/card_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/text_margin"
             android:layout_toRightOf="@id/divider"
-            tools:text="Кви 26, 2016"
-            android:layout_margin="@dimen/text_margin"/>
+            tools:text="Кви 26, 2016" />
 
         <TextView
             android:id="@+id/card_days_left"
@@ -92,8 +91,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            tools:text="-14 днив"
-            android:layout_margin="@dimen/text_margin"/>
+            android:layout_margin="@dimen/text_margin"
+            tools:text="-14 днив" />
 
     </RelativeLayout>
 

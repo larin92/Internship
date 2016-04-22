@@ -45,9 +45,13 @@ public class ParticleSystemRenderer implements GLSurfaceView.Renderer {
      * it positions things relative to our eye.
      */
     private float[] mViewMatrix = new float[16];
-    /** Store the projection matrix. This is used to project the scene onto a 2D viewport. */
+    /**
+     * Store the projection matrix. This is used to project the scene onto a 2D viewport.
+     */
     private float[] mProjectionMatrix = new float[16];
-    /** Allocate storage for the final combined matrix. This will be passed into the shader program. */
+    /**
+     * Allocate storage for the final combined matrix. This will be passed into the shader program.
+     */
     private float[] mMVPMatrix = new float[16];
     private float[] mTemporaryMatrix = new float[16];
     private int timeHandle;
@@ -89,14 +93,14 @@ public class ParticleSystemRenderer implements GLSurfaceView.Renderer {
         GLES20.glEnable(GLES20.GL_DEPTH_TEST);
 
         // Position the eye in front of the origin.
-        final float eyeX =  0.0f;
-        final float eyeY =  0.0f;
-        final float eyeZ =  0.0f;
+        final float eyeX = 0.0f;
+        final float eyeY = 0.0f;
+        final float eyeZ = 0.0f;
 
         // We are looking toward the distance
-        final float lookX =  0.0f;
-        final float lookY =  0.0f;
-        final float lookZ =  1.0f;
+        final float lookX = 0.0f;
+        final float lookY = 0.0f;
+        final float lookZ = 1.0f;
 
         // Set our up vector. This is where our head would be pointing were we holding the camera.
         final float upX = 0.0f;
@@ -199,7 +203,7 @@ public class ParticleSystemRenderer implements GLSurfaceView.Renderer {
     public void logFrame() {
         frames++;
         timePassed = (System.nanoTime() - startTime) / 1_000_000;
-        if(timePassed >= 10_000) {
+        if (timePassed >= 10_000) {
             Timber.d("fps %d @ %d stars || %f", frames / 10, com.larin92.testtasks.internship.particlesys.ParticleSystem.PARTICLE_COUNT, mTime);
             frames = 0;
             startTime = System.nanoTime();

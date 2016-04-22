@@ -9,7 +9,7 @@ public class MathHelper {
         return x * (1 - a) + y * a;
     }
 
-    public static float mix(float a, float b , double k) {
+    public static float mix(float a, float b, double k) {
         return (float) (a * (1 - k) + b * k);
     }
 

@@ -15,10 +15,15 @@
     <string name="status0">В роботі</string>
     <string name="status1">Вирішено</string>
     <string name="status2">Очікує</string>
+    <string name="statusWut">Неясно</string>
     <string name="third">Вирішити до</string>
     <string name="third_a">29 лютого 2016</string>
     <string name="title">Комунальне господарство</string>
     <string name="days">днів</string>
+    <string name="all_queries">All queries</string>
+    <string name="map">Map</string>
+    <string name="log_in">Log in</string>
+    <string name="inDevelopment">This feature is currently in the development</string>
 </resources>
     <!--on android 6.0 on choosing the uk_UA locale english string show up
                                        uk-uk locale - works fine-->

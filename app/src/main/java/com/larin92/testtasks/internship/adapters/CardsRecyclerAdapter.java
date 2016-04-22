@@ -17,10 +17,10 @@ import java.util.List;
  */
 public class CardsRecyclerAdapter extends RecyclerView.Adapter<Holder> {
 
-    private Context mContext;
-    private List<CardModel> mCardModelList;
     static final String TAG = "CardsRecyclerAdapter";
     private final CardsFragment.OnListFragmentInteractionListener mListener;
+    private Context mContext;
+    private List<CardModel> mCardModelList;
 
     public CardsRecyclerAdapter(Context context, List<CardModel> cardModelList,
                                 CardsFragment.OnListFragmentInteractionListener listener) {
@@ -46,6 +46,6 @@ public class CardsRecyclerAdapter extends RecyclerView.Adapter<Holder> {
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         CardModel cardModel = mCardModelList.get(position);
-        holder.setHolderData(position, cardModel);
+        holder.setHolderData(cardModel);
     }
 }

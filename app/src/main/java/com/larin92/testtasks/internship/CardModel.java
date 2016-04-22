@@ -3,13 +3,23 @@ package com.larin92.testtasks.internship;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by larin92 on 19.04.2016.
  */
 public class CardModel implements Parcelable {
+    public static final Creator<CardModel> CREATOR = new Creator<CardModel>() {
+        @Override
+        public CardModel createFromParcel(Parcel in) {
+            return new CardModel(in);
+        }
+
+        @Override
+        public CardModel[] newArray(int size) {
+            return new CardModel[size];
+        }
+    };
     final static String Item = "Item";
     final int ID;
     String mCategory;
@@ -21,15 +31,11 @@ public class CardModel implements Parcelable {
     int mDaysLeft;
     int mLikes;
     int mStatus;
-
     List<String> mUrls;
     String mResponsible;
-    Date m;
-    //mImageView.setImageResource(R.drawable.ic_drawer_menu);
-
 
     public CardModel(int id, String category, String description, String address, String dateCreated, String dateRegistered, String dateSolveTo, int likes, int status, List<String> urls, String responsible, int daysLeft) {
-        ID=id;
+        ID = id;
         mCategory = category;
         mDescription = description;
         mAddress = address;
@@ -56,18 +62,6 @@ public class CardModel implements Parcelable {
         mUrls = in.createStringArrayList();
         mResponsible = in.readString();
     }
-
-    public static final Creator<CardModel> CREATOR = new Creator<CardModel>() {
-        @Override
-        public CardModel createFromParcel(Parcel in) {
-            return new CardModel(in);
-        }
-
-        @Override
-        public CardModel[] newArray(int size) {
-            return new CardModel[size];
-        }
-    };
 
     @Override
     public int describeContents() {

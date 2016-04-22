@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.larin92.testtasks.internship.adapters.CardsListAdapter;
 import com.larin92.testtasks.internship.adapters.CardsRecyclerAdapter;
+import com.melnykov.fab.FloatingActionButton;
 
 /**
  * A fragment representing a list of Items.
@@ -66,17 +67,19 @@ public class CardsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cards_list, container, false);
         // Set the adapter
+        FloatingActionButton mFab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
         Context context = view.getContext();
         mTab = getArguments().getInt(ARG_TAB_NUMBER);
-        if (mTab ==2) {
+        if (mTab == 2) {
             ListView listView = (ListView) view.findViewById(R.id.listview);
             listView.setAdapter(mCardsListAdapter);
+            mFab.attachToListView(listView);
             Log.v(TAG, "onCreateView CARDS LIST " + mTab);
-        }
-        else {
+        } else {
             RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_cards);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             recyclerView.setAdapter(mRecyclerAdapter);
+            mFab.attachToRecyclerView(recyclerView);
             Log.v(TAG, "onCreateView CARDS RECYCLER " + mTab);
         }
         //recyclerView.setAdapter(new MyCardRecyclerViewAdapter(DummyContent.ITEMS, mListener));
@@ -111,7 +114,7 @@ public class CardsFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-         //Update argument type and name
+        //Update argument type and name
         void onListFragmentInteraction(CardModel item);
     }
 }

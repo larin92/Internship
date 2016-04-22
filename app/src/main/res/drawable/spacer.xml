@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <size
-        android:height="@dimen/oneDp"/>
+    <size android:height="@dimen/oneDp" />
 
-    <solid android:color="@color/spacer"/>
+    <solid android:color="@color/spacer" />
 
 </shape>

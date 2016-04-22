@@ -1,63 +1,63 @@
 package com.larin92.testtasks.internship;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Toast;
 
 import com.larin92.testtasks.internship.adapters.CardsFragmentPagerAdapter;
+import com.yalantis.phoenix.PullToRefreshView;
 
 public class NavigationActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,
-                   CardsFragment.OnListFragmentInteractionListener{
+        implements CardsFragment.OnListFragmentInteractionListener {
+    PullToRefreshView mPullToRefreshView;
+    DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drawer);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
-            //supportActionBar.setHomeAsUpIndicator(R.drawable.ic_drawer_menu);
+            supportActionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
-        //TODO:
-        //
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        //.setAction("Action", null).show();
-            }
-        });
+        pullToRefresh();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        //toggle.setHomeAsUpIndicator(R.drawable.ic_drawer_menu);
-        drawer.setDrawerListener(toggle);
-        //toggle.setHomeAsUpIndicator(R.drawable.ic_drawer_menu);
-        //TODO change this BS toggle
-        toggle.syncState();
-        //toggle.setHomeAsUpIndicator(R.drawable.ic_drawer_menu);
-
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        if (navigationView != null)
+            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.nav_all_queries:
+                            toastInDev();
+                        case R.id.nav_map:
+                            toastInDev();
+                        case R.id.nav_login:
+                            toastInDev();
+                        default:
+                            mDrawerLayout.closeDrawers();
+                            return true;
+                    }
+                }
+            });
 
         App app = new App();
         app.createData(this);
@@ -69,6 +69,31 @@ public class NavigationActivity extends AppCompatActivity
         // Give the TabLayout the ViewPager
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+    }
+
+    public void toastInDev() {
+        Toast.makeText(this, getResources().getString(R.string.inDevelopment), Toast.LENGTH_SHORT).show();
+    }
+
+    private void pullToRefresh() {
+        final int REFRESH_DELAY = 2000;
+        mPullToRefreshView = (PullToRefreshView) findViewById(R.id.pull_to_refresh);
+        final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.bird);
+        mp.setLooping(true);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mp.start();
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.pause();
+                        mPullToRefreshView.setRefreshing(false);
+                    }
+                }, REFRESH_DELAY);
+            }
+        });
     }
 
     @Override
@@ -82,7 +107,7 @@ public class NavigationActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation, menu);
+        getMenuInflater().inflate(R.menu.navigation_menu, menu);
         return true;
     }
 
@@ -95,39 +120,15 @@ public class NavigationActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            toastInDev();
+            return true;
+        }
+
+        if (id == android.R.id.home) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            Log.v("!!!!!!!", "onNavigationItemSelected: camera");
-            //item.setChecked(false);
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            //item.setChecked(false);
-            Log.v("!!!!!!!", "onNavigationItemSelected: gallery");
-        } else if (id == R.id.nav_slideshow) {
-            Log.v("!!!!!!!", "onNavigationItemSelected: slideshow");
-        } else if (id == R.id.nav_manage) {
-            Log.v("!!!!!!!", "onNavigationItemSelected: manage");
-        } else if (id == R.id.nav_share) {
-            Log.v("!!!!!!!", "onNavigationItemSelected: share");
-        } else if (id == R.id.nav_send) {
-            Log.v("!!!!!!!", "onNavigationItemSelected: send");
-        }
-        //item.setChecked(false);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //drawer.closeDrawers();
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

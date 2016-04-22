@@ -165,7 +165,7 @@ public class ParticlesGenerator implements Runnable {
                 positionOffset += ParticleSystem.POS_DATA_SIZE;
 
                 interleavedBuffer.put(uvData, uvOffset, ParticleSystem.TEXTURE_COORDS_DATA_SIZE);
-                uvOffset = (uvOffset + ParticleSystem.TEXTURE_COORDS_DATA_SIZE ) % uvData.length;
+                uvOffset = (uvOffset + ParticleSystem.TEXTURE_COORDS_DATA_SIZE) % uvData.length;
 
                 interleavedBuffer.put(miscData, starDataOffset, ParticleSystem.MISC_DATA_SIZE);
                 starDataOffset += ParticleSystem.MISC_DATA_SIZE;

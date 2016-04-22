@@ -10,15 +10,15 @@
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/card"
-
-        android:scrollbars="vertical"/>
+        android:divider="@android:color/transparent"
+        android:dividerHeight="@dimen/card_margin"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/card" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_cards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:scrollbars="vertical"
-        tools:listitem="@layout/card"/>
+        tools:listitem="@layout/card" />
 </FrameLayout>

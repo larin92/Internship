@@ -17,9 +17,9 @@ import java.util.List;
  */
 public class CardsListAdapter extends BaseAdapter {
 
+    private final CardsFragment.OnListFragmentInteractionListener mListener;
     private Context mContext;
     private List<CardModel> mCardModelList;
-    private final CardsFragment.OnListFragmentInteractionListener mListener;
 
     public CardsListAdapter(Context context, List<CardModel> cardModelList,
                             CardsFragment.OnListFragmentInteractionListener listener) {
@@ -54,7 +54,7 @@ public class CardsListAdapter extends BaseAdapter {
             holder = (Holder) convertView.getTag();
         }
         CardModel cardModel = mCardModelList.get(position);
-        holder.setHolderData(position, cardModel);
+        holder.setHolderData(cardModel);
         return convertView;
     }
 }

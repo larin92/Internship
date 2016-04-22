@@ -31,16 +31,6 @@ public class ItemImageRecyclerAdapter extends RecyclerView.Adapter<ItemImageRecy
         return mImages.size();
     }
 
-    protected class Holder extends RecyclerView.ViewHolder {
-        @Bind(R.id.image)
-        ImageView mImageView;
-
-        public Holder(View v) {
-            super(v);
-            ButterKnife.bind(this, v);
-        }
-    }
-
     // create new view
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -58,5 +48,15 @@ public class ItemImageRecyclerAdapter extends RecyclerView.Adapter<ItemImageRecy
                 .placeholder(R.drawable.placeholder)
                 .crossFade()
                 .into(holder.mImageView);
+    }
+
+    protected class Holder extends RecyclerView.ViewHolder {
+        @Bind(R.id.image)
+        ImageView mImageView;
+
+        public Holder(View v) {
+            super(v);
+            ButterKnife.bind(this, v);
+        }
     }
 }

@@ -2,8 +2,8 @@ package com.larin92.testtasks.internship.particlesys;
 
 import android.opengl.GLES20;
 
-import com.yalantis.starwars.interfaces.Renderable;
 import com.larin92.testtasks.internship.util.gl.Const;
+import com.yalantis.starwars.interfaces.Renderable;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -22,13 +22,12 @@ import static android.opengl.GLES20.glGenBuffers;
  * Created by Artem Kholodnyi on 11/12/15.
  */
 public class ParticleSystem implements Renderable {
-    private final ParticleSystemRenderer mRenderer;
     public static final int PARTICLE_COUNT = 1_000;
-    private int mBufferId;
-
     public static final int POS_DATA_SIZE = 3;
     public static final int TEXTURE_COORDS_DATA_SIZE = 2;
     public static final int MISC_DATA_SIZE = 3;
+    private final ParticleSystemRenderer mRenderer;
+    private int mBufferId;
 
 
     public ParticleSystem(ParticleSystemRenderer renderer, FloatBuffer vertexBuffer) {
@@ -56,7 +55,7 @@ public class ParticleSystem implements Renderable {
 
     // use to make native order buffers
     private ShortBuffer makeShortBuffer(short[] arr) {
-        ByteBuffer bb = ByteBuffer.allocateDirect(arr.length*4);
+        ByteBuffer bb = ByteBuffer.allocateDirect(arr.length * 4);
         bb.order(ByteOrder.nativeOrder());
         ShortBuffer ib = bb.asShortBuffer();
         ib.put(arr);
@@ -111,7 +110,7 @@ public class ParticleSystem implements Renderable {
 
     @Override
     public void release() {
-        final int[] buffersToDelete = new int[] { mBufferId };
+        final int[] buffersToDelete = new int[]{mBufferId};
         GLES20.glDeleteBuffers(buffersToDelete.length, buffersToDelete, 0);
     }
 }
