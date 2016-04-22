@@ -92,9 +92,9 @@ public class ItemActivity extends AppCompatActivity {
     private void receiveAndSetData() {
         CardModel cardModel = getIntent().getParcelableExtra(CardModel.Item);
         if (cardModel != null) {
-            if(cardModel.getmUrls() != null)
+            if (cardModel.getmUrls() != null)
                 mUrls = cardModel.mUrls;
-            if(cardModel.getmCategory() != null)
+            if (cardModel.getmCategory() != null)
                 mCategory.setText(cardModel.getmCategory());
             String status;
             switch (cardModel.getmStatus()) {
@@ -111,17 +111,17 @@ public class ItemActivity extends AppCompatActivity {
                     status = getResources().getString(R.string.statusWut);
             }
             mStatus.setText(status);
-            if(cardModel.getmTitle() != null)
+            if (cardModel.getmTitle() != null)
                 this.setTitle(cardModel.getmTitle());
-            if(cardModel.getmDateCreated() != null)
+            if (cardModel.getmDateCreated() != null)
                 mCreation.setText(cardModel.getmDateCreated());
-            if(cardModel.getmDateRegistered() != null)
+            if (cardModel.getmDateRegistered() != null)
                 mRegistration.setText(cardModel.getmDateRegistered());
-            if(cardModel.getmDateSolveTo() != null)
+            if (cardModel.getmDateSolveTo() != null)
                 mSolveTo.setText(cardModel.getmDateSolveTo());
-            if(cardModel.getmResponsible() != null)
+            if (cardModel.getmResponsible() != null)
                 mResponsible.setText(cardModel.getmResponsible());
-            if(cardModel.getmDescription() != null)
+            if (cardModel.getmDescription() != null)
                 mDescription.setText(cardModel.getmDescription());
         }
     }

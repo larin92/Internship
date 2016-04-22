@@ -15,19 +15,16 @@
     <string name="second_a">in their lab</string>
     <string name="third">Solved</string>
     <string name="third_a">Hawking&#8242;s theory</string>
-    <string name="fourth">it was black hole analog</string>
+    <string name="fourth">Responsible</string>
     <string name="fourth_a">that traps sound waves</string>
     <string name="description">\t\tIn 1974, prominent physicist Stephen Hawking shocked his colleagues by claiming that black holes emit radiation. Forty years later, a laboratory experiment seems to have confirmed his theory. The study is published in the journal «Nature Physics».\n\t\tBlack holes – points in space where the density of matter approaches infinity – have such a powerful gravitational field that nothing, not even light, can escape. However, in 1974, Hawking came up with a theory that black holes are not completely black, and are constantly emitting a faint light. The so-called Hawking radiation is the result of quantum phenomena. According to quantum theory, the vacuum is never completely empty but is flooded with “virtual particles” of matter and antimatter, which only appear for a moment before annihilating each other.</string>
     <string name="title_activity_navigation">NavigationActivity</string>
-
 
     <string name="nav_header">e-contact</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="days">days</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="all_queries">All queries</string>
     <string name="map">Map</string>
     <string name="log_in">Log in</string>

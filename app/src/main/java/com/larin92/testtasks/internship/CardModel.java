@@ -50,6 +50,7 @@ public class CardModel implements Parcelable {
         mDaysLeft = daysLeft;
         mTitle = title;
     }
+
     private CardModel(Parcel in) {
         ID = in.readInt();
         mCategory = in.readString();

@@ -67,7 +67,7 @@ public class App extends Application {
         int status;
         String category;
         String description;
-        String title="Some juicy Astrophysics";
+        String title = "Some juicy Astrophysics";
         for (int i = 0; i < 20; i++) {
             CardModel cardModel;
             status = i % 3;
