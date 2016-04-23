@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,9 @@ public class ItemActivity extends AppCompatActivity {
     Toolbar mToolbar;
     @Bind(R.id.recycler_images)
     RecyclerView mRecycler;
+    @Bind(R.id.scrollview)
+    ScrollView mScrollView;
+
     @Bind(R.id.item_category)
     TextView mCategory;
     @Bind(R.id.item_status)
@@ -53,6 +57,7 @@ public class ItemActivity extends AppCompatActivity {
     TextView mResponsible;
     @Bind(R.id.item_description)
     TextView mDescription;
+
     MediaPlayer mp;
     List<String> mUrls = null;
 
@@ -69,6 +74,7 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_activity);
         ButterKnife.bind(this);
+        mScrollView.requestFocus();
 
         //more funk
         initFunk();
@@ -81,7 +87,7 @@ public class ItemActivity extends AppCompatActivity {
         }
 
         receiveAndSetData();
-
+        
         //populate our recyclerView
         populateRecycler();
 
