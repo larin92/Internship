@@ -41,6 +41,22 @@ public class NavigationActivity extends AppCompatActivity
         // the app theme tho(communal services)
         pullToRefresh();
 
+        initDrawer();
+
+        App app = new App();
+        app.createData(this);
+
+        //TODO add Butterknife
+        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new CardsFragmentPagerAdapter(this, getSupportFragmentManager()));
+
+        // Give the TabLayout the ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void initDrawer() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null)
@@ -60,18 +76,6 @@ public class NavigationActivity extends AppCompatActivity
                     }
                 }
             });
-
-        App app = new App();
-        app.createData(this);
-
-        // Get the ViewPager and set it's PagerAdapter so that it can display items
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new CardsFragmentPagerAdapter(this, getSupportFragmentManager()));
-
-        // Give the TabLayout the ViewPager
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-
     }
 
     public void toastInDev() {
@@ -99,11 +103,13 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     @Override
-    public void onListFragmentInteraction(CardModel item) {
+    public void onListFragmentInteraction(final CardModel item) {
         Log.v("HEY", "clicked item's id is " + item.getID());
         Intent intent = new Intent(this, ItemActivity.class);
         intent.putExtra(CardModel.Item, item);
         startActivity(intent);
+        //TODO make sharedTransition
+        overridePendingTransition(R.anim.upslide_enter, R.anim.upslide_exit);
     }
 
     @Override

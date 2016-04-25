@@ -7,24 +7,15 @@ import android.media.MediaPlayer;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.larin92.testtasks.internship.adapters.ItemImageRecyclerAdapter;
 import com.larin92.testtasks.internship.particlesys.ParticleSystemRenderer;
 import com.yalantis.starwars.TilesFrameLayout;
 import com.yalantis.starwars.interfaces.TilesFrameLayoutListener;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,36 +23,18 @@ import butterknife.ButterKnife;
 
 public class ItemActivity extends AppCompatActivity {
 
-    @Bind(R.id.tiles_frame_layout)
-    TilesFrameLayout mTilesFrameLayout;
-    @Bind(R.id.gl_surface_view)
-    GLSurfaceView mGlSurfaceView;
+    final int FRAGMENT_START_DELAY = 0;
+    final int FRAGMENT_END_DELAY = 0;
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.recycler_images)
-    RecyclerView mRecycler;
-    @Bind(R.id.scrollview)
-    ScrollView mScrollView;
-
-    @Bind(R.id.item_category)
-    TextView mCategory;
-    @Bind(R.id.item_status)
-    TextView mStatus;
-    @Bind(R.id.item_creation)
-    TextView mCreation;
-    @Bind(R.id.item_registration)
-    TextView mRegistration;
-    @Bind(R.id.item_solveTo)
-    TextView mSolveTo;
-    @Bind(R.id.item_responsible)
-    TextView mResponsible;
-    @Bind(R.id.item_description)
-    TextView mDescription;
-
+    @Bind(R.id.gl_surface_view)
+    GLSurfaceView mGlSurfaceView;
+    @Bind(R.id.tiles_frame_layout)
+    TilesFrameLayout mTilesFrameLayout;
     MediaPlayer mp;
-    List<String> mUrls = null;
+    CardModel mCardModel = null;
 
-    public static void sendViewToBack(final View child) {
+    private static void sendViewToBack(final View child) {
         final ViewGroup parent = (ViewGroup) child.getParent();
         if (null != parent) {
             parent.removeView(child);
@@ -74,87 +47,44 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_activity);
         ButterKnife.bind(this);
-        mScrollView.requestFocus();
-
-        //more funk
-        initFunk();
-        backGroundStars();
-
         //sets up the Back Button
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        receiveAndSetData();
-        
-        //populate our recyclerView
-        populateRecycler();
+        setWindowTitle();
 
         //funky stuff
+        initFunk();
         starWars();
-    }
 
-    private void receiveAndSetData() {
-        CardModel cardModel = getIntent().getParcelableExtra(CardModel.Item);
-        if (cardModel != null) {
-            if (cardModel.getmUrls() != null)
-                mUrls = cardModel.mUrls;
-            if (cardModel.getmCategory() != null)
-                mCategory.setText(cardModel.getmCategory());
-            String status;
-            switch (cardModel.getmStatus()) {
-                case 0:
-                    status = getResources().getString(R.string.status0);
-                    break;
-                case 1:
-                    status = getResources().getString(R.string.status1);
-                    break;
-                case 2:
-                    status = getResources().getString(R.string.status2);
-                    break;
-                default:
-                    status = getResources().getString(R.string.statusWut);
+        backGroundStars();
+
+        mGlSurfaceView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                showFragment();
             }
-            mStatus.setText(status);
-            if (cardModel.getmTitle() != null)
-                this.setTitle(cardModel.getmTitle());
-            if (cardModel.getmDateCreated() != null)
-                mCreation.setText(cardModel.getmDateCreated());
-            if (cardModel.getmDateRegistered() != null)
-                mRegistration.setText(cardModel.getmDateRegistered());
-            if (cardModel.getmDateSolveTo() != null)
-                mSolveTo.setText(cardModel.getmDateSolveTo());
-            if (cardModel.getmResponsible() != null)
-                mResponsible.setText(cardModel.getmResponsible());
-            if (cardModel.getmDescription() != null)
-                mDescription.setText(cardModel.getmDescription());
-        }
+        }, FRAGMENT_START_DELAY);
     }
 
-    //more funk
-    private void initFunk() {
-        mp = MediaPlayer.create(getApplicationContext(), R.raw.start);
-        mp.start();
-        mp.setLooping(true);
+    private void setWindowTitle() {
+        mCardModel = getIntent().getParcelableExtra(CardModel.Item);
+        if (mCardModel.getmTitle() != null)
+            setTitle(mCardModel.getmTitle());
     }
 
-    //populate our recyclerView
-    protected void populateRecycler() {
-        if (mUrls == null) {
-            mUrls = new ArrayList<>(Arrays.
-                    asList(getResources().
-                            getStringArray(R.array.urls)));
-        }
-
-        mRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        ItemImageRecyclerAdapter adapter = new ItemImageRecyclerAdapter(this, mUrls);
-        mRecycler.setAdapter(adapter);
+    private void showFragment() {
+        ItemFragment mItemFragment = ItemFragment.newInstance(mCardModel, this);
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.upslide_enter, 0)
+                .add(R.id.container, mItemFragment, "greetings")
+                .commit();
     }
 
     //funky stuff
     private void starWars() {
-        final int ENDSCREEN_DELAY = 1000;
         TilesFrameLayoutListener listener = new TilesFrameLayoutListener() {
             @Override
             public void onAnimationFinished() {
@@ -163,11 +93,19 @@ public class ItemActivity extends AppCompatActivity {
                     public void run() {
                         mp.stop();
                         finish();
+                        overridePendingTransition(R.anim.downslide_enter, R.anim.downslide_exit);
                     }
-                }, ENDSCREEN_DELAY);
+                }, FRAGMENT_END_DELAY);
             }
         };
         mTilesFrameLayout.setOnAnimationFinishedListener(listener);
+    }
+
+    //more funk
+    private void initFunk() {
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.start);
+        mp.start();
+        mp.setLooping(true);
     }
 
     public void onClickToast(View view) {

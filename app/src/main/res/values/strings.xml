@@ -29,4 +29,7 @@
     <string name="map">Map</string>
     <string name="log_in">Log in</string>
     <string name="inDevelopment">This feature is currently in the development</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
