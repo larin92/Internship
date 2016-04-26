@@ -11,7 +11,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -104,11 +103,9 @@ public class NavigationActivity extends AppCompatActivity
 
     @Override
     public void onListFragmentInteraction(final CardModel item) {
-        Log.v("HEY", "clicked item's id is " + item.getID());
         Intent intent = new Intent(this, ItemActivity.class);
         intent.putExtra(CardModel.Item, item);
         startActivity(intent);
-        //TODO make sharedTransition
         overridePendingTransition(R.anim.upslide_enter, R.anim.upslide_exit);
     }
 

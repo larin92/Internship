@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mock1">
+        <item>: Part 2</item>
+        <item>Milky way</item>
+        <item>1967</item>
+        <item>1974</item>
+        <item>2008</item>
+        <item>Nobody knows</item>
+        <item>Neutron star is like one big atom, the size of the mountain, it&#8242;s mass is so concentrated, that on the inside it is a big bowl of a gluon soup</item>
+    </string-array>
+</resources>

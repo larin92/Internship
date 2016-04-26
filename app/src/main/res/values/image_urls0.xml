@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="urls">
+    <string-array name="urls0">
         <item>http://www.nasa.gov/sites/default/files/672589main_diagram_swiftj1644_qpo_labels.jpg</item>
         <item>http://www.nasa.gov/sites/default/files/cygx1_ill.jpg</item>
         <item>https://i.ytimg.com/vi/hu6hIhW00Fk/maxresdefault.jpg</item>

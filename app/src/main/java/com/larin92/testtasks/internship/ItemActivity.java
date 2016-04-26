@@ -23,8 +23,6 @@ import butterknife.ButterKnife;
 
 public class ItemActivity extends AppCompatActivity {
 
-    final int FRAGMENT_START_DELAY = 0;
-    final int FRAGMENT_END_DELAY = 0;
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
     @Bind(R.id.gl_surface_view)
@@ -61,12 +59,13 @@ public class ItemActivity extends AppCompatActivity {
 
         backGroundStars();
 
-        mGlSurfaceView.postDelayed(new Runnable() {
+        //makes animation smooth
+        mGlSurfaceView.post(new Runnable() {
             @Override
             public void run() {
                 showFragment();
             }
-        }, FRAGMENT_START_DELAY);
+        });
     }
 
     private void setWindowTitle() {
@@ -88,14 +87,9 @@ public class ItemActivity extends AppCompatActivity {
         TilesFrameLayoutListener listener = new TilesFrameLayoutListener() {
             @Override
             public void onAnimationFinished() {
-                mTilesFrameLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mp.stop();
-                        finish();
-                        overridePendingTransition(R.anim.downslide_enter, R.anim.downslide_exit);
-                    }
-                }, FRAGMENT_END_DELAY);
+                mp.stop();
+                finish();
+                overridePendingTransition(R.anim.downslide_enter, R.anim.downslide_exit);
             }
         };
         mTilesFrameLayout.setOnAnimationFinishedListener(listener);

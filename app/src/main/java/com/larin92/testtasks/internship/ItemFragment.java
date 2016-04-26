@@ -1,6 +1,7 @@
 package com.larin92.testtasks.internship;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -54,10 +55,11 @@ public class ItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.item_content, container, false);
+        View view = inflater.inflate(R.layout.item_fragment, container, false);
         ButterKnife.bind(this, view);
 
-        receiveAndSetData();
+        DataWorker data = new DataWorker();
+        data.execute();
 
         return view;
     }
@@ -66,8 +68,19 @@ public class ItemFragment extends Fragment {
         if (mCardModel != null) {
             if (mCardModel.getmUrls() != null)
                 mUrls = mCardModel.mUrls;
-            if (mCardModel.getmCategory() != null)
-                mCategory.setText(mCardModel.getmCategory());
+            switch (mCardModel.getmCategory()) {
+                case 0:
+                    mCategory.setText(mContext.getResources().getString(R.string.mockCategory0));
+                    break;
+                case 1:
+                    mCategory.setText(mContext.getResources().getString(R.string.mockCategory1));
+                    break;
+                case 2:
+                    mCategory.setText(mContext.getResources().getString(R.string.mockCategory2));
+                    break;
+                default:
+                    mCategory.setText(mContext.getResources().getString(R.string.statusWut));
+            }
             String status;
             switch (mCardModel.getmStatus()) {
                 case 0:
@@ -95,8 +108,6 @@ public class ItemFragment extends Fragment {
             if (mCardModel.getmDescription() != null)
                 mDescription.setText(mCardModel.getmDescription());
         }
-
-        populateRecycler();
     }
 
     //populate our recyclerView
@@ -104,11 +115,24 @@ public class ItemFragment extends Fragment {
         if (mUrls == null) {
             mUrls = new ArrayList<>(Arrays.
                     asList(getResources().
-                            getStringArray(R.array.urls)));
+                            getStringArray(R.array.urls0)));
         }
 
         mRecycler.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false));
         ItemImageRecyclerAdapter adapter = new ItemImageRecyclerAdapter(mContext, mUrls);
         mRecycler.setAdapter(adapter);
+    }
+
+    class DataWorker extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... params) {
+            receiveAndSetData();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            populateRecycler();
+        }
     }
 }
