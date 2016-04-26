@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 
 public class ItemActivity extends AppCompatActivity {
 
+    final int FRAGMENT_DELAY = 500;
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
     @Bind(R.id.gl_surface_view)
@@ -59,13 +60,8 @@ public class ItemActivity extends AppCompatActivity {
 
         backGroundStars();
 
-        //makes animation smooth
-        mGlSurfaceView.post(new Runnable() {
-            @Override
-            public void run() {
-                showFragment();
-            }
-        });
+        showFragment();
+
     }
 
     private void setWindowTitle() {
@@ -75,11 +71,16 @@ public class ItemActivity extends AppCompatActivity {
     }
 
     private void showFragment() {
-        ItemFragment mItemFragment = ItemFragment.newInstance(mCardModel, this);
-        getSupportFragmentManager().beginTransaction()
-                .setCustomAnimations(R.anim.upslide_enter, 0)
-                .add(R.id.container, mItemFragment, "greetings")
-                .commit();
+        final ItemFragment mItemFragment = ItemFragment.newInstance(mCardModel, this);
+        mGlSurfaceView.postDelayed(new Runnable() {     //  makes animation smooth
+            @Override
+            public void run() {
+                getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(R.anim.upslide_enter, 0)
+                    .add(R.id.container, mItemFragment, "greetings")
+                    .commit();
+            }
+        }, FRAGMENT_DELAY);
     }
 
     //funky stuff

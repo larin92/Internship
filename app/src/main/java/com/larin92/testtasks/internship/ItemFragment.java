@@ -1,7 +1,6 @@
 package com.larin92.testtasks.internship;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -58,8 +57,7 @@ public class ItemFragment extends Fragment {
         View view = inflater.inflate(R.layout.item_fragment, container, false);
         ButterKnife.bind(this, view);
 
-        DataWorker data = new DataWorker();
-        data.execute();
+        receiveAndSetData();
 
         return view;
     }
@@ -108,6 +106,7 @@ public class ItemFragment extends Fragment {
             if (mCardModel.getmDescription() != null)
                 mDescription.setText(mCardModel.getmDescription());
         }
+        populateRecycler();
     }
 
     //populate our recyclerView
@@ -121,18 +120,5 @@ public class ItemFragment extends Fragment {
         mRecycler.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false));
         ItemImageRecyclerAdapter adapter = new ItemImageRecyclerAdapter(mContext, mUrls);
         mRecycler.setAdapter(adapter);
-    }
-
-    class DataWorker extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... params) {
-            receiveAndSetData();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            populateRecycler();
-        }
     }
 }
