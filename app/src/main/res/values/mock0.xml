@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mock0">
+        <item>: Part 1</item>
+        <item>Someday</item>
+        <item>a long long time ago</item>
+        <item>nobody solved it</item>
+        <item>The Creator</item>
+        <item>улица Пушкина, дом Колотушкина</item>
+    </string-array>
+</resources>

@@ -29,4 +29,9 @@
     <string name="map">Map</string>
     <string name="log_in">Log in</string>
     <string name="inDevelopment">This feature is currently in the development</string>
+
+    <string name="mockTitle">Some juicy Astrophysics</string>
+    <string name="mockCategory0">Black Hole</string>
+    <string name="mockCategory1">Neutron Star</string>
+    <string name="mockCategory2">Supernova Explosion</string>
 </resources>

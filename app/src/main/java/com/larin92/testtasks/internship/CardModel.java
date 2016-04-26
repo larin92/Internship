@@ -22,7 +22,7 @@ public class CardModel implements Parcelable {
     };
     final static String Item = "Item";
     final int ID;
-    String mCategory;
+    int mCategory;
     String mDescription;
     String mAddress;
     String mDateCreated; //TODO make Date
@@ -35,7 +35,7 @@ public class CardModel implements Parcelable {
     List<String> mUrls;
     String mResponsible;
 
-    public CardModel(int id, String category, String description, String address, String dateCreated, String dateRegistered, String dateSolveTo, int likes, int status, List<String> urls, String responsible, int daysLeft, String title) {
+    public CardModel(int id, int category, String description, String address, String dateCreated, String dateRegistered, String dateSolveTo, int likes, int status, List<String> urls, String responsible, int daysLeft, String title) {
         ID = id;
         mCategory = category;
         mDescription = description;
@@ -53,7 +53,7 @@ public class CardModel implements Parcelable {
 
     private CardModel(Parcel in) {
         ID = in.readInt();
-        mCategory = in.readString();
+        mCategory = in.readInt();
         mDescription = in.readString();
         mAddress = in.readString();
         mDateCreated = in.readString();
@@ -82,7 +82,7 @@ public class CardModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(ID);
-        dest.writeString(mCategory);
+        dest.writeInt(mCategory);
         dest.writeString(mDescription);
         dest.writeString(mAddress);
         dest.writeString(mDateCreated);
@@ -99,11 +99,11 @@ public class CardModel implements Parcelable {
         return ID;
     }
 
-    public String getmCategory() {
+    public int getmCategory() {
         return mCategory;
     }
 
-    public void setmCategory(String mCategory) {
+    public void setmCategory(int mCategory) {
         this.mCategory = mCategory;
     }
 

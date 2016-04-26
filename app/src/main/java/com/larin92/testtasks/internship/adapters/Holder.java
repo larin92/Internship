@@ -60,13 +60,13 @@ public class Holder extends RecyclerView.ViewHolder {
     public void setHolderData(CardModel cardModel) {
         mCardModel = cardModel;
         switch (mCardModel.getmCategory()) {
-            case "Black Hole":
+            case 0:
                 mCategory.setImageResource(R.drawable.ic_business);
                 break;
-            case "Neutron Star":
+            case 1:
                 mCategory.setImageResource(R.drawable.ic_cogwheel);
                 break;
-            case "Supernova Explosion":
+            case 2:
                 mCategory.setImageResource(R.drawable.ic_construction);
                 break;
             default:

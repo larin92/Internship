@@ -2,6 +2,7 @@ package com.larin92.testtasks.internship;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Resources;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,46 +54,43 @@ public class App extends Application {
         }
     }
 
-    public void createData(Context context) { //this is only a mockup, so yea, hardcode
+    public void createData(Context context) {
         List<String> urls;
+        List<String> urls0 = new ArrayList<>(Arrays.
+                asList(context.getResources().
+                        getStringArray(R.array.urls0)));
         List<String> urls1 = new ArrayList<>(Arrays.
                 asList(context.getResources().
-                        getStringArray(R.array.urls)));
+                        getStringArray(R.array.urls1)));
         List<String> urls2 = new ArrayList<>(Arrays.
                 asList(context.getResources().
                         getStringArray(R.array.urls2)));
-        List<String> urls3 = new ArrayList<>(Arrays.
-                asList(context.getResources().
-                        getStringArray(R.array.urls3)));
+        Resources res = context.getResources();
+        String[] mock0 = res.getStringArray(R.array.mock0);
+        String[] mock1 = res.getStringArray(R.array.mock1);
+        String[] mock2 = res.getStringArray(R.array.mock2);
         int status;
-        String category;
+        int category;
         String description;
-        String title = "Some juicy Astrophysics";
+        String title = context.getString(R.string.mockTitle);
         for (int i = 0; i < 20; i++) {
-            CardModel cardModel;
+            CardModel cardModel = null;
             status = i % 3;
+            category = status;
             switch (status) {
                 case 0:
-                    urls = urls1;
-                    category = "Black Hole";
+                    urls = urls0;
                     description = context.getString(R.string.description);
-                    cardModel = new CardModel(ID, category, description, "улица Пушкина, дом Колотушкина", "Someday", "a long long time ago", "nobody solved it", i, status, urls, "The Creator", 14, title + ": Part 1");
+                    cardModel = new CardModel(ID, category, description, mock0[5], mock0[1], mock0[2], mock0[3], i, status, urls, mock0[4], 14, title + mock0[0]);
                     break;
                 case 1:
-                    urls = urls2;
-                    category = "Neutron Star";
-                    cardModel = new CardModel(ID, category, "Neutron star is like one big atom, the size of the mountain, it's mass is so concentrated, that on the inside it is a big bowl of a gluon soup", "Milky way", "1967", "1974", "2008", 9999, status, urls2, "Nobody knows", -999, title + ": Part 2");
+                    urls = urls1;
+                    cardModel = new CardModel(ID, category, mock1[6], mock1[1], mock1[2], mock1[3], mock1[4], 9999, status, urls1, mock1[5], -999, title + mock1[0]);
                     break;
                 case 2:
-                    urls = urls3;
-                    category = "Supernova Explosion";
-                    cardModel = new CardModel(ID, category, "When supernova explodes, it shines brighter than the whole galaxy it was located in. Supernovas give birth to heavy elements, we're all consist of. We're all made of stars", "Andromeda", "185 A.D.", "1885", "2009", 1234, status, urls3, "Who asks this stuff", 999, title + ": Part 3");
+                    urls = urls2;
+                    cardModel = new CardModel(ID, category, mock2[1], mock2[2], mock2[3], mock2[4], mock2[5], 1234, status, urls2, mock2[6], 999, title + mock2[0]);
                     break;
-                default:
-                    urls = urls1;
-                    status = 3;
-                    category = "Black Matter";
-                    cardModel = new CardModel(ID, category, "Well, actually nobody knows what this is", "Milky way", "1967", "1974", "2008", 9999, status, urls2, "Nobody knows", -999, title + ": Part 2");
             }
             ID++;
             addData(cardModel);
