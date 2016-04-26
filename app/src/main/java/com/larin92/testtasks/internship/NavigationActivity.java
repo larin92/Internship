@@ -3,9 +3,11 @@ package com.larin92.testtasks.internship;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -18,22 +20,39 @@ import android.widget.Toast;
 import com.larin92.testtasks.internship.adapters.CardsFragmentPagerAdapter;
 import com.yalantis.phoenix.PullToRefreshView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class NavigationActivity extends AppCompatActivity
         implements CardsFragment.OnListFragmentInteractionListener {
+    @Bind(R.id.pull_to_refresh)
     PullToRefreshView mPullToRefreshView;
+    @Bind(R.id.viewpager)
+    ViewPager mViewPager;
+    @Bind(R.id.tabs)
+    TabLayout mTabLayout;
+    @Bind(R.id.nav_view)
+    NavigationView mNavigationView;
+    @Bind(R.id.appbar)
+    AppBarLayout mAppBar;
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
+    @Bind(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drawer);
+        ButterKnife.bind(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
             supportActionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
             supportActionBar.setDisplayHomeAsUpEnabled(true);
+            ViewCompat.setElevation(mAppBar, 0f);
+            ViewCompat.setElevation(mToolbar, 10f);
         }
 
         // i was thinking about customising it. it will look great with
@@ -47,19 +66,15 @@ public class NavigationActivity extends AppCompatActivity
 
         //TODO add Butterknife
         // Get the ViewPager and set it's PagerAdapter so that it can display items
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new CardsFragmentPagerAdapter(this, getSupportFragmentManager()));
+        mViewPager.setAdapter(new CardsFragmentPagerAdapter(this, getSupportFragmentManager()));
 
         // Give the TabLayout the ViewPager
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     private void initDrawer() {
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        if (navigationView != null)
-            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        if (mNavigationView != null)
+            mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(MenuItem item) {
                     switch (item.getItemId()) {
@@ -83,7 +98,6 @@ public class NavigationActivity extends AppCompatActivity
 
     private void pullToRefresh() {
         final int REFRESH_DELAY = 2000;
-        mPullToRefreshView = (PullToRefreshView) findViewById(R.id.pull_to_refresh);
         final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.bird);
         mp.setLooping(true);
         mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
