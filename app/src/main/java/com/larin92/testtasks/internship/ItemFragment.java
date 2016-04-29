@@ -34,7 +34,7 @@ public class ItemFragment extends Fragment {
     @Bind(R.id.item_registration)
     TextView mRegistration;
     @Bind(R.id.item_solveTo)
-    TextView mSolveTo;
+    TextView mResolveTo;
     @Bind(R.id.item_responsible)
     TextView mResponsible;
     @Bind(R.id.item_description)
@@ -99,8 +99,8 @@ public class ItemFragment extends Fragment {
                 mCreation.setText(mCardModel.getmDateCreated());
             if (mCardModel.getmDateRegistered() != null)
                 mRegistration.setText(mCardModel.getmDateRegistered());
-            if (mCardModel.getmDateSolveTo() != null)
-                mSolveTo.setText(mCardModel.getmDateSolveTo());
+            if (mCardModel.getmDateResolveTo() != null)
+                mResolveTo.setText(mCardModel.getmDateResolveTo());
             if (mCardModel.getmResponsible() != null)
                 mResponsible.setText(mCardModel.getmResponsible());
             if (mCardModel.getmDescription() != null)

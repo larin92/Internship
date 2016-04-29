@@ -78,7 +78,7 @@ public class Holder extends RecyclerView.ViewHolder {
         mAddress.setText(mCardModel.getmAddress());
 
         if (mCardModel.getmStatus() == 1)
-            mDate.setText(mCardModel.getmDateSolveTo());
+            mDate.setText(mCardModel.getmDateResolveTo());
         else
             mDate.setText(mCardModel.getmDateCreated());
         if (mCardModel.getmStatus() == 0) {
