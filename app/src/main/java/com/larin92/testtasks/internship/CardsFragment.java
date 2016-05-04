@@ -1,6 +1,7 @@
 package com.larin92.testtasks.internship;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,10 @@ import android.widget.ListView;
 import com.larin92.testtasks.internship.adapters.CardsListAdapter;
 import com.larin92.testtasks.internship.adapters.CardsRecyclerAdapter;
 import com.melnykov.fab.FloatingActionButton;
+import com.yalantis.phoenix.PullToRefreshView;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * A fragment representing a list of Items.
@@ -29,6 +34,10 @@ public class CardsFragment extends Fragment {
     private CardsRecyclerAdapter mRecyclerAdapter;
     private CardsListAdapter mCardsListAdapter;
     private OnListFragmentInteractionListener mListener;
+    @Bind(R.id.pull_to_refresh)
+    PullToRefreshView mPullToRefreshView;
+
+    final int REFRESH_DELAY = 2000;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -66,24 +75,59 @@ public class CardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cards_list, container, false);
-        // Set the adapter
-        FloatingActionButton mFab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+        ButterKnife.bind(this, view);
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
         Context context = view.getContext();
+        pullToRefresh(context);
+
         mTab = getArguments().getInt(ARG_TAB_NUMBER);
         if (mTab == 2) {
             ListView listView = (ListView) view.findViewById(R.id.listview);
             listView.setAdapter(mCardsListAdapter);
-            mFab.attachToListView(listView);
+            //haven't found a way to fix
+            //maybe lib doesn't work well with listview
+            mPullToRefreshView.setEnabled(false);
+            fab.attachToListView(listView);
             Log.v(TAG, "onCreateView CARDS LIST " + mTab);
         } else {
             RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_cards);
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+            recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(mRecyclerAdapter);
-            mFab.attachToRecyclerView(recyclerView);
+            refreshFix(recyclerView, layoutManager);
+            fab.attachToRecyclerView(recyclerView);
             Log.v(TAG, "onCreateView CARDS RECYCLER " + mTab);
         }
-        //recyclerView.setAdapter(new MyCardRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         return view;
+    }
+
+    private void pullToRefresh(Context context) {
+        final MediaPlayer mp = MediaPlayer.create(context, R.raw.bird);
+        mp.setLooping(true);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mp.start();
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mp.pause();
+                        mPullToRefreshView.setRefreshing(false);
+                    }
+                }, REFRESH_DELAY);
+            }
+        });
+    }
+
+    private void refreshFix(final RecyclerView recyclerView, final LinearLayoutManager layoutManager) {
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                int firstVisibleItem = layoutManager.findFirstCompletelyVisibleItemPosition();
+                mPullToRefreshView.setEnabled(firstVisibleItem == 0);
+            }
+        });
     }
 
     @Override
@@ -92,7 +136,7 @@ public class CardsFragment extends Fragment {
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
+            throw new ClassCastException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
         }
     }

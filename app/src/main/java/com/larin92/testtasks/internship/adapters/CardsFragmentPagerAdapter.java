@@ -14,6 +14,7 @@ import com.larin92.testtasks.internship.R;
 public class CardsFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private Context mContext;
+    private final int tabsAmount = 3;
 
     public CardsFragmentPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -27,7 +28,7 @@ public class CardsFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return tabsAmount;
     }
 
     @Override

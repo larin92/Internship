@@ -64,9 +64,9 @@ public class ItemFragment extends Fragment {
 
     private void receiveAndSetData() {
         if (mCardModel != null) {
-            if (mCardModel.getmUrls() != null)
-                mUrls = mCardModel.mUrls;
-            switch (mCardModel.getmCategory()) {
+            if (mCardModel.getUrls() != null)
+                mUrls = mCardModel.getUrls();
+            switch (mCardModel.getCategory()) {
                 case 0:
                     mCategory.setText(mContext.getResources().getString(R.string.mockCategory0));
                     break;
@@ -80,7 +80,7 @@ public class ItemFragment extends Fragment {
                     mCategory.setText(mContext.getResources().getString(R.string.statusWut));
             }
             String status;
-            switch (mCardModel.getmStatus()) {
+            switch (mCardModel.getStatus()) {
                 case 0:
                     status = getResources().getString(R.string.status0);
                     break;
@@ -95,16 +95,16 @@ public class ItemFragment extends Fragment {
             }
             mStatus.setText(status);
 
-            if (mCardModel.getmDateCreated() != null)
-                mCreation.setText(mCardModel.getmDateCreated());
-            if (mCardModel.getmDateRegistered() != null)
-                mRegistration.setText(mCardModel.getmDateRegistered());
-            if (mCardModel.getmDateResolveTo() != null)
-                mResolveTo.setText(mCardModel.getmDateResolveTo());
-            if (mCardModel.getmResponsible() != null)
-                mResponsible.setText(mCardModel.getmResponsible());
-            if (mCardModel.getmDescription() != null)
-                mDescription.setText(mCardModel.getmDescription());
+            if (mCardModel.getDateCreated() != null)
+                mCreation.setText(mCardModel.getDateCreated());
+            if (mCardModel.getDateRegistered() != null)
+                mRegistration.setText(mCardModel.getDateRegistered());
+            if (mCardModel.getDateResolveTo() != null)
+                mResolveTo.setText(mCardModel.getDateResolveTo());
+            if (mCardModel.getResponsible() != null)
+                mResponsible.setText(mCardModel.getResponsible());
+            if (mCardModel.getDescription() != null)
+                mDescription.setText(mCardModel.getDescription());
         }
         populateRecycler();
     }

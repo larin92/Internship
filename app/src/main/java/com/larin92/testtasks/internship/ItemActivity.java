@@ -23,7 +23,6 @@ import butterknife.ButterKnife;
 
 public class ItemActivity extends AppCompatActivity {
 
-    final int FRAGMENT_DELAY = 500;
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
     @Bind(R.id.gl_surface_view)
@@ -32,6 +31,7 @@ public class ItemActivity extends AppCompatActivity {
     TilesFrameLayout mTilesFrameLayout;
     MediaPlayer mp;
     CardModel mCardModel = null;
+    final int FRAGMENT_DELAY = 500;
 
     private static void sendViewToBack(final View child) {
         final ViewGroup parent = (ViewGroup) child.getParent();
@@ -66,8 +66,8 @@ public class ItemActivity extends AppCompatActivity {
 
     private void setWindowTitle() {
         mCardModel = getIntent().getParcelableExtra(CardModel.Item);
-        if (mCardModel.getmTitle() != null)
-            setTitle(mCardModel.getmTitle());
+        if (mCardModel.getTitle() != null)
+            setTitle(mCardModel.getTitle());
     }
 
     private void showFragment() {
@@ -76,9 +76,9 @@ public class ItemActivity extends AppCompatActivity {
             @Override
             public void run() {
                 getSupportFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.anim.upslide_enter, 0)
-                    .add(R.id.container, mItemFragment, "greetings")
-                    .commit();
+                        .setCustomAnimations(R.anim.upslide_enter, 0)
+                        .add(R.id.container, mItemFragment)
+                        .commit();
             }
         }, FRAGMENT_DELAY);
     }

@@ -59,7 +59,7 @@ public class Holder extends RecyclerView.ViewHolder {
 
     public void setHolderData(CardModel cardModel) {
         mCardModel = cardModel;
-        switch (mCardModel.getmCategory()) {
+        switch (mCardModel.getCategory()) {
             case 0:
                 mCategory.setImageResource(R.drawable.ic_business);
                 break;
@@ -73,16 +73,16 @@ public class Holder extends RecyclerView.ViewHolder {
                 mCategory.setImageResource(R.drawable.ic_trash);
         }
 
-        mLikeCount.setText(String.valueOf(mCardModel.getmLikes()));
-        mDescription.setText(mCardModel.getmDescription());
-        mAddress.setText(mCardModel.getmAddress());
+        mLikeCount.setText(String.valueOf(mCardModel.getLikes()));
+        mDescription.setText(mCardModel.getDescription());
+        mAddress.setText(mCardModel.getAddress());
 
-        if (mCardModel.getmStatus() == 1)
-            mDate.setText(mCardModel.getmDateResolveTo());
+        if (mCardModel.getStatus() == 1)
+            mDate.setText(mCardModel.getDateResolveTo());
         else
-            mDate.setText(mCardModel.getmDateCreated());
-        if (mCardModel.getmStatus() == 0) {
-            String daysLeft = mCardModel.getmDaysLeft() + " " + mContext.getResources().getString(R.string.days);
+            mDate.setText(mCardModel.getDateCreated());
+        if (mCardModel.getStatus() == 0) {
+            String daysLeft = mCardModel.getDaysLeft() + " " + mContext.getResources().getString(R.string.days);
             mDaysLeft.setText(daysLeft);
         }
         setOnClickListener();

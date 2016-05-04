@@ -36,7 +36,7 @@ public class App extends Application {
     }
 
     public int addData(CardModel cardModel) {
-        switch (cardModel.getmStatus()) {
+        switch (cardModel.getStatus()) {
             case 0:
                 inWork.add(cardModel);
                 return 0;
@@ -47,7 +47,7 @@ public class App extends Application {
                 waiting.add(cardModel);
                 return 2;
             default:
-                cardModel.setmStatus(3);
+                cardModel.setStatus(3);
                 waiting.add(cardModel);
                 return 3;
         }
@@ -101,17 +101,11 @@ public class App extends Application {
     /**
      * To use with not-mocks
 
-     cardModel = new CardModel()
-             .setCategory(category)
-             .setDescription(description)
-             .setAddress(address)
-             .setDateCreated(dateCreated)
-             .setDateRegistered(dateRegistered)
-             .setDateResolveTo(dateResolveTo)
-             .setLikes(likes)
-             .setStatus(status)
-             .setUrls(urls)
-             .setResponsible(responsible)
-             .setTitle(title);
+     CardModel cardModel = CardModel.newBuilder()
+     .setCategory(category)
+     .setDescription(description)
+     .setAddress(address)
+     .build();
+
      */
 }

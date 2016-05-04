@@ -10,23 +10,91 @@ import java.util.List;
  */
 public class CardModel implements Parcelable {
 
-    final static String Item = "Item";
-    int mCategory;
-    String mDescription;
-    String mAddress;
+    public final static String Item = "Item";
+    private int mCategory;
+    private String mDescription;
+    private String mAddress;
     //  i assume Date type will be needed when we'll work with database, not mocks
-    String mDateCreated; //TODO make Date
-    String mDateRegistered;
-    String mDateResolveTo;
-    int mDaysLeft;
-    int mLikes;
-    int mStatus;
-    String mTitle;
-    List<String> mUrls;
-    String mResponsible;
+    private String mDateCreated; //TODO make Date
+    private String mDateRegistered;
+    private String mDateResolveTo;
+    private int mDaysLeft;
+    private int mLikes;
+    private int mStatus;
+    private String mTitle;
+    private List<String> mUrls;
+    private String mResponsible;
 
     public CardModel() {
+    }
 
+    public static Builder newBuilder() {
+        return new CardModel().new Builder();
+    }
+
+    public class Builder {
+
+        private Builder() {
+        }
+
+        public CardModel build() {
+            return CardModel.this;
+        }
+
+        public Builder setCategory(int category) {
+            CardModel.this.mCategory = category;
+            return this;
+        }
+
+        public Builder setDescription(String description) {
+            CardModel.this.mDescription = description;
+            return this;
+        }
+
+        public Builder setAddress(String address) {
+            CardModel.this.mAddress = address;
+            return this;
+        }
+
+        public Builder setDateCreated(String dateCreated) {
+            CardModel.this.mDateCreated = dateCreated;
+            return this;
+        }
+
+        public Builder setDateRegistered(String dateRegistered) {
+            CardModel.this.mDateRegistered = dateRegistered;
+            return this;
+        }
+
+        public Builder setDateResolveTo(String dateResolveTo) {
+            CardModel.this.mDateResolveTo = dateResolveTo;
+            return this;
+        }
+
+        public Builder setLikes(int likes) {
+            CardModel.this.mLikes = likes;
+            return this;
+        }
+
+        public Builder setStatus(int status) {
+            CardModel.this.mStatus = status;
+            return this;
+        }
+
+        public Builder setUrls(List<String> urls) {
+            CardModel.this.mUrls = urls;
+            return this;
+        }
+
+        public Builder setResponsible(String responsible) {
+            CardModel.this.mResponsible = responsible;
+            return this;
+        }
+
+        public Builder setTitle(String title) {
+            CardModel.this.mTitle = title;
+            return this;
+        }
     }
 
     public CardModel(int category, String description, String address, String dateCreated, String dateRegistered, String dateResolveTo, int likes, int status, List<String> urls, String responsible, int daysLeft, String title) {
@@ -42,62 +110,6 @@ public class CardModel implements Parcelable {
         mResponsible = responsible;
         mDaysLeft = daysLeft;
         mTitle = title;
-    }
-
-    //  cool readable initialisers
-    CardModel setCategory(int category) {
-        mCategory = category;
-        return this;
-    }
-
-    CardModel setDescription(String description) {
-        mDescription = description;
-        return this;
-    }
-
-    CardModel setAddress(String address) {
-        mAddress = address;
-        return this;
-    }
-
-    CardModel setDateCreated(String dateCreated) {
-        mDateCreated = dateCreated;
-        return this;
-    }
-
-    CardModel setDateRegistered(String dateRegistered) {
-        mDateRegistered = dateRegistered;
-        return this;
-    }
-
-    CardModel setDateResolveTo(String dateResolveTo) {
-        mDateResolveTo = dateResolveTo;
-        return this;
-    }
-
-    CardModel setLikes(int likes) {
-        mLikes = likes;
-        return this;
-    }
-
-    CardModel setStatus(int status) {
-        mStatus = status;
-        return this;
-    }
-
-    CardModel setUrls(List<String> urls) {
-        mUrls = urls;
-        return this;
-    }
-
-    CardModel setResponsible(String responsible) {
-        mResponsible = responsible;
-        return this;
-    }
-
-    CardModel setTitle(String title) {
-        mTitle = title;
-        return this;
     }
 
     private CardModel(Parcel in) {
@@ -147,99 +159,99 @@ public class CardModel implements Parcelable {
     };
 
     //  setters to use in future
-    public String getmTitle() {
+    public String getTitle() {
         return mTitle;
     }
 
-    public void setmTitle(String mTitle) {
+    public void setTitle(String mTitle) {
         this.mTitle = mTitle;
     }
 
-    public int getmCategory() {
+    public int getCategory() {
         return mCategory;
     }
 
-    public void setmCategory(int mCategory) {
+    public void setCategory(int mCategory) {
         this.mCategory = mCategory;
     }
 
-    public String getmDescription() {
+    public String getDescription() {
         return mDescription;
     }
 
-    public void setmDescription(String mDescription) {
+    public void setDescription(String mDescription) {
         this.mDescription = mDescription;
     }
 
-    public String getmAddress() {
+    public String getAddress() {
         return mAddress;
     }
 
-    public void setmAddress(String mAddress) {
+    public void setAddress(String mAddress) {
         this.mAddress = mAddress;
     }
 
-    public String getmDateCreated() {
+    public String getDateCreated() {
         return mDateCreated;
     }
 
-    public void setmDateCreated(String mDateCreated) {
+    public void setDateCreated(String mDateCreated) {
         this.mDateCreated = mDateCreated;
     }
 
-    public String getmDateRegistered() {
+    public String getDateRegistered() {
         return mDateRegistered;
     }
 
-    public void setmDateRegistered(String mDateRegistered) {
+    public void setDateRegistered(String mDateRegistered) {
         this.mDateRegistered = mDateRegistered;
     }
 
-    public String getmDateResolveTo() {
+    public String getDateResolveTo() {
         return mDateResolveTo;
     }
 
-    public void setmDateResolveTo(String mDateResolveTo) {
+    public void setDateResolveTo(String mDateResolveTo) {
         this.mDateResolveTo = mDateResolveTo;
     }
 
-    public int getmDaysLeft() {
+    public int getDaysLeft() {
         return mDaysLeft;
     }
 
-    public void setmDaysLeft(int mDaysLeft) {
+    public void setDaysLeft(int mDaysLeft) {
         this.mDaysLeft = mDaysLeft;
     }
 
-    public int getmLikes() {
+    public int getLikes() {
         return mLikes;
     }
 
-    public void setmLikes(int mLikes) {
+    public void setLikes(int mLikes) {
         this.mLikes = mLikes;
     }
 
-    public int getmStatus() {
+    public int getStatus() {
         return mStatus;
     }
 
-    public void setmStatus(int mStatus) {
+    public void setStatus(int mStatus) {
         this.mStatus = mStatus;
     }
 
-    public List<String> getmUrls() {
+    public List<String> getUrls() {
         return mUrls;
     }
 
-    public void setmUrls(List<String> mUrls) {
+    public void setUrls(List<String> mUrls) {
         this.mUrls = mUrls;
     }
 
-    public String getmResponsible() {
+    public String getResponsible() {
         return mResponsible;
     }
 
-    public void setmResponsible(String mResponsible) {
+    public void setResponsible(String mResponsible) {
         this.mResponsible = mResponsible;
     }
 }

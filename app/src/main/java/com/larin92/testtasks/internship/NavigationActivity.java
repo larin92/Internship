@@ -1,7 +1,6 @@
 package com.larin92.testtasks.internship;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
@@ -18,15 +17,13 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.larin92.testtasks.internship.adapters.CardsFragmentPagerAdapter;
-import com.yalantis.phoenix.PullToRefreshView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class NavigationActivity extends AppCompatActivity
         implements CardsFragment.OnListFragmentInteractionListener {
-    @Bind(R.id.pull_to_refresh)
-    PullToRefreshView mPullToRefreshView;
+
     @Bind(R.id.viewpager)
     ViewPager mViewPager;
     @Bind(R.id.tabs)
@@ -55,16 +52,11 @@ public class NavigationActivity extends AppCompatActivity
             ViewCompat.setElevation(mToolbar, 10f);
         }
 
-        // i was thinking about customising it. it will look great with
-        // the app theme tho(communal services)
-        pullToRefresh();
-
         initDrawer();
 
         App app = new App();
         app.createData(this);
 
-        //TODO add Butterknife
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         mViewPager.setAdapter(new CardsFragmentPagerAdapter(this, getSupportFragmentManager()));
 
@@ -94,25 +86,6 @@ public class NavigationActivity extends AppCompatActivity
 
     public void toastInDev() {
         Toast.makeText(this, getResources().getString(R.string.inDevelopment), Toast.LENGTH_SHORT).show();
-    }
-
-    private void pullToRefresh() {
-        final int REFRESH_DELAY = 2000;
-        final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.bird);
-        mp.setLooping(true);
-        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mp.start();
-                mPullToRefreshView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mp.pause();
-                        mPullToRefreshView.setRefreshing(false);
-                    }
-                }, REFRESH_DELAY);
-            }
-        });
     }
 
     @Override

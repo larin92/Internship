@@ -17,7 +17,6 @@ import java.util.List;
  */
 public class CardsRecyclerAdapter extends RecyclerView.Adapter<Holder> {
 
-    static final String TAG = "CardsRecyclerAdapter";
     private final CardsFragment.OnListFragmentInteractionListener mListener;
     private Context mContext;
     private List<CardModel> mCardModelList;
@@ -42,7 +41,6 @@ public class CardsRecyclerAdapter extends RecyclerView.Adapter<Holder> {
         return new Holder(v, mContext, mListener);
     }
 
-    //
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         CardModel cardModel = mCardModelList.get(position);
