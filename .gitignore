@@ -1,6 +1,7 @@
 *.iml
 .gradle
 /local.properties
+/.idea/*
 /.idea/workspace.xml
 /.idea/libraries
 /.idea/misc.xml
@@ -22,3 +23,4 @@
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+app/src/main/java/com/larin92/testtasks/internship/DummyContent.java

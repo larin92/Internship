@@ -4,12 +4,12 @@
     <solid android:color="@color/orange" />
 
     <!-- just to max it out -->
-    <corners android:radius="@dimen/image_size"/>
+    <corners android:radius="@dimen/image_size" />
     <!--Maybe it doesn't make sense, but i made use of existing dependencies-->
     <padding
         android:bottom="@dimen/status_height"
-        android:top="@dimen/status_height"
         android:left="@dimen/text_size"
-        android:right="@dimen/text_size" />
+        android:right="@dimen/text_size"
+        android:top="@dimen/status_height" />
 
 </shape>

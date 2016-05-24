@@ -56,4 +56,9 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="nav_header_text">
+        <item name="android:textSize">@dimen/nav_header_text_size</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

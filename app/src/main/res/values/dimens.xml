@@ -5,9 +5,31 @@
     <dimen name="image_padding">16dp</dimen>
 
     <dimen name="text_size">14sp</dimen>
+    <dimen name="description_size">16sp</dimen>
+    <dimen name="nav_header_text_size">24sp</dimen>
+
     <dimen name="title_size">16dp</dimen>
-    <dimen name="image_size">256dp</dimen>
+    <dimen name="image_size">300dp</dimen>
     <dimen name="oneDp">1dp</dimen>
 
     <dimen name="status_height">8dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">76dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_content_padding">8dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <!-- Cards -->
+    <dimen name="card_height">134dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_icon_margin">25dp</dimen>
+    <dimen name="card_bottom_margin">16dp</dimen>
+    <dimen name="card_address_margin">44dp</dimen>
+    <dimen name="card_desc_height">40dp</dimen>
+    <dimen name="card_divider_margin">80dp</dimen>
+
 </resources>

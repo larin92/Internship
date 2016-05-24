@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yalantis.phoenix.PullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pull_to_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/nav_content_padding"
+        tools:context=".CardsFragment">
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="@dimen/card_margin"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/card" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_cards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/card" />
+    </FrameLayout>
+
+</com.yalantis.phoenix.PullToRefreshView>
