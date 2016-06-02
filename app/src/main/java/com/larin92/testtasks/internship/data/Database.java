@@ -1,20 +1,13 @@
 package com.larin92.testtasks.internship.data;
 
 import com.larin92.testtasks.internship.App;
-import com.larin92.testtasks.internship.R;
 import com.larin92.testtasks.internship.data.model.CardModel;
-import com.larin92.testtasks.internship.data.model.ImageModel;
 import com.larin92.testtasks.internship.data.model.json.Model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.RealmList;
 import io.realm.RealmObject;
 
 public class Database {
@@ -82,44 +75,20 @@ public class Database {
         for (int i = 0; i < response.size(); i++) {
             Model model = response.get(i);
 
-            String performers = "";
-            if (model.getPerformers() != null)
-                for (int j = 0; j < model.getPerformers().size(); j++) {
-                    if (j > 0)
-                        performers += ", ";
-                    performers += model.getPerformers().get(j).getOrganization();
-                }
-
-            RealmList<ImageModel> images = new RealmList<>();
-            if (model.getFiles() != null)
-                for (int j = 0; j < model.getFiles().size(); j++) {
-                    images.add(new ImageModel(model.getFiles().get(j).getFilename()));
-                }
-
-            String address = "";
-            if (model.getGeoAddress() != null)
-                address = model.getGeoAddress().getAddress();
-
-            String daysLeft = "";
-            if (model.getDeadline() != null && model.getStartDate() != null) {
-                int days = (model.getDeadline() - model.getStartDate()) / (24 * 60 * 60 * 1000);
-                daysLeft = String.valueOf(days);
-            }
-
             final CardModel cardModel = CardModel.newBuilder()
                     .setID(model.getId())
                     .setCategory(model.getTitle())
                     .setDescription(model.getBody())
-                    .setAddress(address)
-                    .setDateCreated(format(model.getCreatedDate()))
-                    .setDateRegistered(format(model.getStartDate()))
-                    .setDateResolveTo(format(model.getDeadline()))
-                    .setDaysLeft(daysLeft)
+                    .setAddress(model.getAddress())
+                    .setDateCreated(model.getCreatedDate())
+                    .setDateRegistered(model.getStartDate())
+                    .setDateResolveTo(model.getDeadline())
+                    .setDaysLeft(model.getDaysLeft())
                     .setLikes(model.getLikesCounter())
                     .setStatus(model.getState().getId())
                     .setTitle(model.getTitle())
-                    .setImages(images)
-                    .setResponsible(performers)
+                    .setImages(model.getFilesList())
+                    .setResponsible(model.getPerformers())
                     .build();
             mRealm.executeTransactionAsync(new Realm.Transaction() {
                 @Override
@@ -134,17 +103,6 @@ public class Database {
         mRealm.beginTransaction();
         mRealm.copyToRealmOrUpdate(object);
         mRealm.commitTransaction();
-    }
-
-    private String format(Integer dateInt) {
-        if (dateInt == null)
-            return "";
-        DateFormat formatter = new SimpleDateFormat(App.getContext()
-                .getString(R.string.date_pattern),
-                Locale.getDefault());
-        Date date = new Date(dateInt);
-
-        return formatter.format(date);
     }
 
     public void deleteAll() {

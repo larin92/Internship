@@ -2,9 +2,18 @@ package com.larin92.testtasks.internship.data.model.json;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.larin92.testtasks.internship.App;
+import com.larin92.testtasks.internship.R;
+import com.larin92.testtasks.internship.data.model.ImageModel;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
+import io.realm.RealmList;
 
 public class Model {
 
@@ -99,6 +108,13 @@ public class Model {
         return geoAddress;
     }
 
+    public String getAddress() {
+        String address = "";
+        if (geoAddress != null)
+            address = geoAddress.getAddress();
+        return address;
+    }
+
     /**
      * @param geoAddress The geo_address
      */
@@ -190,8 +206,8 @@ public class Model {
     /**
      * @return The createdDate
      */
-    public Integer getCreatedDate() {
-        return createdDate;
+    public String getCreatedDate() {
+        return format(createdDate);
     }
 
     /**
@@ -209,8 +225,8 @@ public class Model {
     /**
      * @return The startDate
      */
-    public Integer getStartDate() {
-        return startDate;
+    public String getStartDate() {
+        return format(startDate);
     }
 
     /**
@@ -270,6 +286,15 @@ public class Model {
         return files;
     }
 
+    public RealmList<ImageModel> getFilesList() {
+        RealmList<ImageModel> images = new RealmList<>();
+        if (files != null)
+            for (int j = 0; j < files.size(); j++) {
+                images.add(new ImageModel(files.get(j).getFilename()));
+            }
+        return images;
+    }
+
     /**
      * @param files The files
      */
@@ -285,8 +310,15 @@ public class Model {
     /**
      * @return The performers
      */
-    public List<Performer> getPerformers() {
-        return performers;
+    public String getPerformers() {
+        String performersString = "";
+        if (performers != null)
+            for (int j = 0; j < performers.size(); j++) {
+                if (j > 0)
+                    performersString += ", ";
+                performersString += performers.get(j).getOrganization();
+            }
+        return performersString;
     }
 
     /**
@@ -304,8 +336,28 @@ public class Model {
     /**
      * @return The deadline
      */
-    public Integer getDeadline() {
-        return deadline;
+    public String getDeadline() {
+        return format(deadline);
+    }
+
+    public String getDaysLeft() {
+        String daysLeft = "";
+        if (deadline != null && startDate != null) {
+            int days = (deadline - startDate) / (24 * 60 * 60 * 1000);
+            daysLeft = String.valueOf(days);
+        }
+        return daysLeft;
+    }
+
+    private String format(Integer dateInt) {
+        if (dateInt == null)
+            return "";
+        DateFormat formatter = new SimpleDateFormat(App.getContext()
+                .getString(R.string.date_pattern),
+                Locale.getDefault());
+        Date date = new Date(dateInt);
+
+        return formatter.format(date);
     }
 
     /**
