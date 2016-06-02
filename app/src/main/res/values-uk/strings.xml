@@ -24,6 +24,5 @@
     <string name="map">Map</string>
     <string name="log_in">Log in</string>
     <string name="inDevelopment">This feature is currently in the development</string>
-</resources>
-    <!--on android 6.0 on choosing the uk_UA locale english string show up
+</resources><!--on android 6.0 on choosing the uk_UA locale english string show up
                                        uk-uk locale - works fine-->

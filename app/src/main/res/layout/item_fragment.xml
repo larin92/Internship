@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollview"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@android:color/white"
     android:focusableInTouchMode="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -39,6 +39,7 @@
             android:layout_marginTop="@dimen/nested_layout_margin">
 
             <TextView
+                android:id="@+id/item_creation_header"
                 style="@style/greyText"
                 android:text="@string/first" />
 
@@ -55,6 +56,7 @@
             android:layout_marginTop="@dimen/nested_layout_margin">
 
             <TextView
+                android:id="@+id/item_registration_header"
                 style="@style/greyText"
                 android:text="@string/second" />
 
@@ -71,6 +73,7 @@
             android:layout_marginTop="@dimen/nested_layout_margin">
 
             <TextView
+                android:id="@+id/item_solveto_header"
                 style="@style/greyText"
                 android:text="@string/third" />
 
@@ -94,6 +97,8 @@
                 android:id="@+id/item_responsible"
                 style="@style/blackText"
                 android:layout_alignParentRight="true"
+                android:ellipsize="end"
+                android:maxLength="30"
                 android:text="@string/fourth_a" />
         </RelativeLayout>
 
@@ -114,7 +119,8 @@
                 android:id="@+id/recycler_images"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="horizontal" />
+                android:scrollbars="horizontal"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
         </LinearLayout>
 
     </LinearLayout>

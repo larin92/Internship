@@ -1,0 +1,29 @@
+package com.larin92.testtasks.internship.presenter;
+
+import android.content.Intent;
+
+import com.larin92.testtasks.internship.contract.ItemContract;
+import com.larin92.testtasks.internship.data.Database;
+import com.larin92.testtasks.internship.data.model.CardModel;
+
+public class ItemPresenter implements ItemContract.Presenter {
+
+    private ItemContract.View mView;
+
+    @Override
+    public void attachView(ItemContract.View view) {
+        mView = view;
+    }
+
+    @Override
+    public void detachView() {
+        mView = null;
+    }
+
+    @Override
+    public void receiveData(Intent intent) {
+        int id = intent.getIntExtra(CardModel.ID, 0);
+        CardModel cardModel = Database.please().findById(id);
+        mView.setData(cardModel);
+    }
+}

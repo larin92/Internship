@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.larin92.testtasks.internship.NavigationActivity">
+    tools:context=".ui.NavigationActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
