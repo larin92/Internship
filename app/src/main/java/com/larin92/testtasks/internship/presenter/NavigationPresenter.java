@@ -48,7 +48,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
     public void attachView(NavigationContract.View view) {
         mSubscription = new CompositeSubscription();
         mOffset = App.getDatabaseManager().getQuery(mQuery).size();
-        Timber.d(TAG, "attachView. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
+        Timber.d("attachView. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
         mView = view;
     }
 
@@ -80,7 +80,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        Timber.e(TAG, "Error: " + e);
+                        Timber.e("Error: " + e);
                         mView.hideRefresh();
                     }
 
@@ -88,7 +88,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
                     public void onNext(List<Model> models) {
                         App.getDatabaseManager().responseAdaption(models);
                         mOffset += models.size();
-                        Timber.d(TAG, "onNext. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
+                        Timber.d("onNext. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
                     }
                 }));
     }
@@ -113,7 +113,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        Timber.e(TAG, "Error: " + e);
+                        Timber.e("Error: " + e);
                         mView.hideRefresh();
                     }
 
@@ -121,7 +121,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
                     public void onNext(List<Model> models) {
                         App.getDatabaseManager().responseAdaption(models);
                         mOffset = models.size();
-                        Timber.d(TAG, "update. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
+                        Timber.d("update. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
                     }
                 }));
     }
@@ -130,18 +130,18 @@ public class NavigationPresenter implements NavigationContract.Presenter {
     public void showBackup() {
         int size = App.getDatabaseManager().getQuery(mQuery).size();
         if (size == 0) {
-            Timber.d(TAG, "showBackup():Q isEmpty)");
+            Timber.d("showBackup():Q isEmpty)");
             receiveData();
             return;
         }
 
         if (mView.getItemCount() == 0) {
-            Timber.d(TAG, "showbackup() setdata");
+            Timber.d("showbackup() setdata");
             mView.setData(App.getDatabaseManager().getQuery(mQuery));
         }
 
         if (mView.getItemCount() < size) {
-            Timber.d(TAG, "showbackup() notify");
+            Timber.d("showbackup() notify");
             mView.notifyAdapter(App.getDatabaseManager().getQuery(mQuery));
         }
     }

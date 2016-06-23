@@ -10,6 +10,8 @@ import com.larin92.testtasks.internship.manager.DatabaseManager;
 
 import java.util.ArrayList;
 
+import timber.log.Timber;
+
 public class App extends Application {
 
     private static Context sContext;
@@ -22,6 +24,10 @@ public class App extends Application {
         sContext = getApplicationContext();
         FacebookSdk.sdkInitialize(getApplicationContext());
         CardModel.initQueries(getInWorkQuery(), getDoneQuery(), getWaitingQuery());
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 
     public static ApiManager getApiManager() {

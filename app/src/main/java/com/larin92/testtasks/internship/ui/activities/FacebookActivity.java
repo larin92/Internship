@@ -118,9 +118,9 @@ public class FacebookActivity extends AppCompatActivity implements FacebookContr
         super.onDestroy();
         if (!(mProfile == null || mAccessToken == null)) {
             mFacebookPresenter.saveData(mProfile, mAccessToken);
-            Timber.d(TAG, "profile saved");
+            Timber.d("profile saved");
         } else
-            Timber.d(TAG, "profile wasn't saved");
+            Timber.d("profile wasn't saved");
         mFacebookPresenter.detachView();
     }
 
