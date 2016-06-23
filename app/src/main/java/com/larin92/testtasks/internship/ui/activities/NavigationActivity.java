@@ -1,4 +1,4 @@
-package com.larin92.testtasks.internship.ui;
+package com.larin92.testtasks.internship.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,8 +18,9 @@ import android.widget.Toast;
 
 import com.larin92.testtasks.internship.App;
 import com.larin92.testtasks.internship.R;
-import com.larin92.testtasks.internship.data.Database;
+import com.larin92.testtasks.internship.manager.DatabaseManager;
 import com.larin92.testtasks.internship.data.model.CardModel;
+import com.larin92.testtasks.internship.ui.fragments.NavigationFragment;
 import com.larin92.testtasks.internship.ui.adapters.CardsFragmentPagerAdapter;
 
 import butterknife.BindView;
@@ -132,7 +133,7 @@ public class NavigationActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            Database.please().deleteAll();
+            App.getDatabaseManager().deleteAll();
             Toast.makeText(this, getResources().getString(R.string.wipe), Toast.LENGTH_SHORT).show();
             return true;
         }

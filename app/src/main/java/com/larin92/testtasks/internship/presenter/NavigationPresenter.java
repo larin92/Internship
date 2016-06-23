@@ -9,8 +9,8 @@ import android.widget.Toast;
 import com.larin92.testtasks.internship.App;
 import com.larin92.testtasks.internship.R;
 import com.larin92.testtasks.internship.contract.NavigationContract;
-import com.larin92.testtasks.internship.data.Api;
-import com.larin92.testtasks.internship.data.Database;
+import com.larin92.testtasks.internship.manager.ApiManager;
+import com.larin92.testtasks.internship.manager.DatabaseManager;
 import com.larin92.testtasks.internship.data.model.CardModel;
 import com.larin92.testtasks.internship.data.model.json.Model;
 
@@ -49,7 +49,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
     @Override
     public void attachView(NavigationContract.View view) {
         mSubscription = new CompositeSubscription();
-        mOffset = Database.please().getQuery(mQuery).size();
+        mOffset = App.getDatabaseManager().getQuery(mQuery).size();
         Log.v(TAG, "Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
         mView = view;
     }
@@ -71,7 +71,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
             return;
         }
         Log.v(TAG, "receiveData");
-        mSubscription.add(Api.please().getBatch(mQuery, mOffset)
+        mSubscription.add(App.getApiManager().getBatch(mQuery, mOffset)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<List<Model>>() {
@@ -91,7 +91,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
                     @Override
                     public void onNext(List<Model> models) {
                         Log.v(TAG, "receiveData onNext");
-                        Database.please().responseAdaption(models);
+                        App.getDatabaseManager().responseAdaption(models);
                         mOffset += models.size();
                         Log.v(TAG, "Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
                     }
@@ -107,7 +107,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
             return;
         }
         Log.v(TAG, "update");
-        mSubscription.add(Api.please().update(mQuery, mOffset)
+        mSubscription.add(App.getApiManager().update(mQuery, mOffset)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<List<Model>>() {
@@ -127,7 +127,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
                     @Override
                     public void onNext(List<Model> models) {
                         Log.v(TAG, "update onNext");
-                        Database.please().responseAdaption(models);
+                        App.getDatabaseManager().responseAdaption(models);
                         mOffset = models.size();
                         Log.v(TAG, "Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
                     }
@@ -136,7 +136,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
 
     @Override
     public void showBackup() {
-        int size = Database.please().getQuery(mQuery).size();
+        int size = App.getDatabaseManager().getQuery(mQuery).size();
         if (size == 0) {
             Log.v(TAG, "showBackup():Q isEmpty)");
             receiveData();
@@ -145,12 +145,12 @@ public class NavigationPresenter implements NavigationContract.Presenter {
 
         if (mView.getItemCount() == 0) {
             Log.v(TAG, "showbackup() setdata");
-            mView.setData(Database.please().getQuery(mQuery));
+            mView.setData(App.getDatabaseManager().getQuery(mQuery));
         }
 
         if (mView.getItemCount() < size) {
             Log.v(TAG, "showbackup() notify");
-            mView.notifyAdapter(Database.please().getQuery(mQuery));
+            mView.notifyAdapter(App.getDatabaseManager().getQuery(mQuery));
         }
     }
 

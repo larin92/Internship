@@ -1,4 +1,4 @@
-package com.larin92.testtasks.internship.ui;
+package com.larin92.testtasks.internship.ui.activities;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.larin92.testtasks.internship.R;
 import com.larin92.testtasks.internship.data.model.CardModel;
+import com.larin92.testtasks.internship.ui.fragments.ItemFragment;
 import com.larin92.testtasks.internship.ui.stars.particlesys.ParticleSystemRenderer;
 import com.yalantis.starwars.TilesFrameLayout;
 import com.yalantis.starwars.interfaces.TilesFrameLayoutListener;
@@ -25,7 +26,7 @@ import butterknife.Unbinder;
 
 public class ItemActivity extends AppCompatActivity {
 
-    final int FRAGMENT_DELAY = 500;
+    final static int FRAGMENT_DELAY = 500;
 
     private Unbinder mUnbinder;
     private MediaPlayer mp;

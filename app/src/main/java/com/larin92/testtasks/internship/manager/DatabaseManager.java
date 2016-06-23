@@ -1,4 +1,4 @@
-package com.larin92.testtasks.internship.data;
+package com.larin92.testtasks.internship.manager;
 
 import com.larin92.testtasks.internship.App;
 import com.larin92.testtasks.internship.data.model.CardModel;
@@ -10,44 +10,46 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
 
-public class Database {
+public class DatabaseManager implements Manager {
 
-    private static volatile Database mDatabase = null;
-    private static volatile Realm mRealm = null;
+    private static volatile Realm sRealm = null;
 
-    public static Database please() {
-        if (mDatabase != null)
-            return mDatabase;
-        mDatabase = new Database();
+    static {
         RealmConfiguration realmConfig = new RealmConfiguration.Builder(App.getContext())
                 .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(realmConfig);
-        mRealm = Realm.getDefaultInstance();
-        return mDatabase;
+        sRealm = Realm.getDefaultInstance();
+    }
+
+    @Override
+    public void clear() {
+        if (sRealm != null && !sRealm.isClosed()) {
+            sRealm.close();
+        }
     }
 
     public CardModel findById(int id) {
-        return mRealm.where(CardModel.class)
+        return sRealm.where(CardModel.class)
                 .equalTo(CardModel.ID, id)
                 .findFirst();
     }
 
     public List<CardModel> getQuery(String query) {
         if (query.equals(CardModel.QUERY_INWORK))
-            return mDatabase.getInWork();
+            return getInWork();
 
         if (query.equals(CardModel.QUERY_DONE))
-            return mDatabase.getDone();
+            return getDone();
 
         if (query.equals(CardModel.QUERY_WAITING))
-            return mDatabase.getWaiting();
+            return getWaiting();
 
-        return mDatabase.getDone();
+        return getDone();
     }
 
     public List<CardModel> getInWork() {
-        return mRealm.where(CardModel.class)
+        return sRealm.where(CardModel.class)
                 .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(0)).or()
                 .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(1)).or()
                 .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(2)).or()
@@ -57,14 +59,14 @@ public class Database {
     }
 
     public List<CardModel> getDone() {
-        return mRealm.where(CardModel.class)
+        return sRealm.where(CardModel.class)
                 .equalTo(CardModel.STATE, CardModel.STATE_DONE.get(0)).or()
                 .equalTo(CardModel.STATE, CardModel.STATE_DONE.get(1)).or()
                 .findAll();
     }
 
     public List<CardModel> getWaiting() {
-        return mRealm.where(CardModel.class)
+        return sRealm.where(CardModel.class)
                 .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(0)).or()
                 .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(1)).or()
                 .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(2)).or()
@@ -90,7 +92,7 @@ public class Database {
                     .setImages(model.getFilesList())
                     .setResponsible(model.getPerformers())
                     .build();
-            mRealm.executeTransactionAsync(new Realm.Transaction() {
+            sRealm.executeTransactionAsync(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
                     realm.copyToRealmOrUpdate(cardModel);
@@ -100,16 +102,16 @@ public class Database {
     }
 
     public <T extends RealmObject> void add(T object) {
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(object);
-        mRealm.commitTransaction();
+        sRealm.beginTransaction();
+        sRealm.copyToRealmOrUpdate(object);
+        sRealm.commitTransaction();
     }
 
     public void deleteAll() {
-        mRealm.executeTransaction(new Realm.Transaction() {
+        sRealm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                mRealm.deleteAll();
+                sRealm.deleteAll();
             }
         });
     }

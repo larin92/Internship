@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.larin92.testtasks.internship.R;
 import com.larin92.testtasks.internship.data.model.CardModel;
-import com.larin92.testtasks.internship.ui.NavigationFragment;
+import com.larin92.testtasks.internship.ui.fragments.NavigationFragment;
 
 import java.util.List;
 

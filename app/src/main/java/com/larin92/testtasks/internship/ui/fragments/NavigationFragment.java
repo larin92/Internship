@@ -1,4 +1,4 @@
-package com.larin92.testtasks.internship.ui;
+package com.larin92.testtasks.internship.ui.fragments;
 
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -35,7 +35,7 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
 
     private static final String TAG = "CardsFragment";
     private static final String ARG_TAB_NUMBER = "tab-number";
-    private final int REFRESH_DELAY = 2000;
+    private static final int REFRESH_DELAY = 2000;
     private int mTab;
     private CardsRecyclerAdapter mRecyclerAdapter;
     private LinearLayoutManager mLinearLayoutManager;

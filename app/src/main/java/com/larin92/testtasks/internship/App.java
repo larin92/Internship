@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.facebook.FacebookSdk;
 import com.larin92.testtasks.internship.data.model.CardModel;
+import com.larin92.testtasks.internship.manager.ApiManager;
+import com.larin92.testtasks.internship.manager.DatabaseManager;
 
 import java.util.ArrayList;
 
@@ -12,14 +14,31 @@ import java.util.ArrayList;
  * Created by larin92 on 20.04.2016.
  */
 public class App extends Application {
-    private static Context mContext;
+
+    private static Context sContext;
+    private static volatile ApiManager sApiManager = null;
+    private static volatile DatabaseManager sDataManager = null;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = getApplicationContext();
+        sContext = getApplicationContext();
         FacebookSdk.sdkInitialize(getApplicationContext());
         CardModel.initQueries(getInWorkQuery(), getDoneQuery(), getWaitingQuery());
+    }
+
+    public static ApiManager getApiManager() {
+        if (sApiManager == null) {
+            sApiManager = new ApiManager();
+        }
+        return sApiManager;
+    }
+
+    public static DatabaseManager getDatabaseManager() {
+        if (sDataManager == null) {
+            sDataManager = new DatabaseManager();
+        }
+        return sDataManager;
     }
 
     private ArrayList<Integer> getInWorkQuery() {
@@ -48,6 +67,6 @@ public class App extends Application {
     }
 
     public static Context getContext() {
-        return mContext;
+        return sContext;
     }
 }

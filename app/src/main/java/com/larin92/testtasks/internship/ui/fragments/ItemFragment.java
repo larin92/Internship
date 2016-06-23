@@ -1,4 +1,4 @@
-package com.larin92.testtasks.internship.ui;
+package com.larin92.testtasks.internship.ui.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ import butterknife.Unbinder;
 
 public class ItemFragment extends Fragment implements ItemContract.View {
 
-    private static Context mContext;
+    private static Context sContext;
     private ItemPresenter mItemPresenter;
     private List<String> mUrls = new ArrayList<>();
     private Unbinder mUnbinder;
@@ -69,7 +69,7 @@ public class ItemFragment extends Fragment implements ItemContract.View {
     }
 
     public static ItemFragment newInstance(Context context) {
-        mContext = context;
+        sContext = context;
         return new ItemFragment();
     }
 
@@ -133,8 +133,8 @@ public class ItemFragment extends Fragment implements ItemContract.View {
     private void populateRecycler() {
         if (mUrls == null) return;
         if (mUrls.size() == 0) return;
-        mRecycler.setLayoutManager(new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false));
-        ItemImageRecyclerAdapter adapter = new ItemImageRecyclerAdapter(mContext, mUrls);
+        mRecycler.setLayoutManager(new LinearLayoutManager(sContext, RecyclerView.HORIZONTAL, false));
+        ItemImageRecyclerAdapter adapter = new ItemImageRecyclerAdapter(sContext, mUrls);
         mRecycler.setAdapter(adapter);
     }
 }
