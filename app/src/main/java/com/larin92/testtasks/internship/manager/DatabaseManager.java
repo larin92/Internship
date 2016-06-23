@@ -36,14 +36,18 @@ public class DatabaseManager implements Manager {
     }
 
     public List<CardModel> getQuery(String query) {
-        if (query.equals(CardModel.QUERY_INWORK))
+
+        if (query.equals(CardModel.QUERY_INWORK)) {
             return getInWork();
+        }
 
-        if (query.equals(CardModel.QUERY_DONE))
+        if (query.equals(CardModel.QUERY_DONE)) {
             return getDone();
+        }
 
-        if (query.equals(CardModel.QUERY_WAITING))
+        if (query.equals(CardModel.QUERY_WAITING)) {
             return getWaiting();
+        }
 
         return getDone();
     }

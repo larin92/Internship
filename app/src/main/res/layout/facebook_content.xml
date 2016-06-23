@@ -26,8 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/FBtext"
-        android:layout_margin="@dimen/activity_padding"
-        android:text="New Button" />
+        android:layout_margin="@dimen/activity_padding" />
 
     <ImageView
         android:layout_width="@dimen/image_size"

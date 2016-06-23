@@ -12,9 +12,6 @@ import com.larin92.testtasks.internship.ui.fragments.NavigationFragment;
 
 import java.util.List;
 
-/**
- * Created by larin92 on 18.04.2016.
- */
 public class CardsRecyclerAdapter extends RecyclerView.Adapter<Holder> {
 
     private final NavigationFragment.OnListFragmentInteractionListener mListener;

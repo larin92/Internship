@@ -68,8 +68,9 @@ public class ItemActivity extends AppCompatActivity {
 
     private void setWindowTitle() {
         String title = getIntent().getStringExtra(CardModel.TITLE);
-        if (title != null)
+        if (title != null) {
             setTitle(title);
+        }
     }
 
     private void showFragment() {

@@ -3,14 +3,11 @@ package com.larin92.testtasks.internship.presenter;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.larin92.testtasks.internship.App;
 import com.larin92.testtasks.internship.R;
 import com.larin92.testtasks.internship.contract.NavigationContract;
-import com.larin92.testtasks.internship.manager.ApiManager;
-import com.larin92.testtasks.internship.manager.DatabaseManager;
 import com.larin92.testtasks.internship.data.model.CardModel;
 import com.larin92.testtasks.internship.data.model.json.Model;
 
@@ -20,6 +17,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 public class NavigationPresenter implements NavigationContract.Presenter {
 
@@ -50,7 +48,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
     public void attachView(NavigationContract.View view) {
         mSubscription = new CompositeSubscription();
         mOffset = App.getDatabaseManager().getQuery(mQuery).size();
-        Log.v(TAG, "Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
+        Timber.d(TAG, "attachView. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
         mView = view;
     }
 
@@ -70,7 +68,6 @@ public class NavigationPresenter implements NavigationContract.Presenter {
             mView.hideRefresh();
             return;
         }
-        Log.v(TAG, "receiveData");
         mSubscription.add(App.getApiManager().getBatch(mQuery, mOffset)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -78,22 +75,20 @@ public class NavigationPresenter implements NavigationContract.Presenter {
                     @Override
                     public void onCompleted() {
                         mView.hideRefresh();
-                        Log.v(TAG, "receiveData onCompleted");
                         showBackup();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(TAG, "Error: " + e);
+                        Timber.e(TAG, "Error: " + e);
                         mView.hideRefresh();
                     }
 
                     @Override
                     public void onNext(List<Model> models) {
-                        Log.v(TAG, "receiveData onNext");
                         App.getDatabaseManager().responseAdaption(models);
                         mOffset += models.size();
-                        Log.v(TAG, "Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
+                        Timber.d(TAG, "onNext. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
                     }
                 }));
     }
@@ -106,7 +101,6 @@ public class NavigationPresenter implements NavigationContract.Presenter {
             mView.hideRefresh();
             return;
         }
-        Log.v(TAG, "update");
         mSubscription.add(App.getApiManager().update(mQuery, mOffset)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -114,22 +108,20 @@ public class NavigationPresenter implements NavigationContract.Presenter {
                     @Override
                     public void onCompleted() {
                         mView.hideRefresh();
-                        Log.v(TAG, "update onCompleted");
                         showBackup();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(TAG, "Error: " + e);
+                        Timber.e(TAG, "Error: " + e);
                         mView.hideRefresh();
                     }
 
                     @Override
                     public void onNext(List<Model> models) {
-                        Log.v(TAG, "update onNext");
                         App.getDatabaseManager().responseAdaption(models);
                         mOffset = models.size();
-                        Log.v(TAG, "Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
+                        Timber.d(TAG, "update. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
                     }
                 }));
     }
@@ -138,18 +130,18 @@ public class NavigationPresenter implements NavigationContract.Presenter {
     public void showBackup() {
         int size = App.getDatabaseManager().getQuery(mQuery).size();
         if (size == 0) {
-            Log.v(TAG, "showBackup():Q isEmpty)");
+            Timber.d(TAG, "showBackup():Q isEmpty)");
             receiveData();
             return;
         }
 
         if (mView.getItemCount() == 0) {
-            Log.v(TAG, "showbackup() setdata");
+            Timber.d(TAG, "showbackup() setdata");
             mView.setData(App.getDatabaseManager().getQuery(mQuery));
         }
 
         if (mView.getItemCount() < size) {
-            Log.v(TAG, "showbackup() notify");
+            Timber.d(TAG, "showbackup() notify");
             mView.notifyAdapter(App.getDatabaseManager().getQuery(mQuery));
         }
     }

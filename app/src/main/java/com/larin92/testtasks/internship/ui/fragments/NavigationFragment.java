@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +32,6 @@ import butterknife.Unbinder;
  */
 public class NavigationFragment extends Fragment implements NavigationContract.View {
 
-    private static final String TAG = "CardsFragment";
     private static final String ARG_TAB_NUMBER = "tab-number";
     private static final int REFRESH_DELAY = 2000;
     private int mTab;
@@ -106,14 +104,14 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
         mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Log.v(TAG, "Query onRefresh");
                 mNavigationPresenter.update();
                 mp.start();
                 mPullToRefreshView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (isDetached() || isRemoving() || !isAdded())
+                        if (isDetached() || isRemoving() || !isAdded()) {
                             return;
+                        }
                         mp.pause();
                         mPullToRefreshView.setRefreshing(false);
                     }
@@ -140,9 +138,11 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
 
     @Override
     public int getItemCount() {
-        if (mRecyclerAdapter != null)
+        if (mRecyclerAdapter != null) {
             return mRecyclerAdapter.getItemCount();
-        else return 0;
+        } else {
+            return 0;
+        }
     }
 
     //  if you will scroll via mouse scroll it won't work
@@ -159,9 +159,11 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
 
             int items = mRecyclerView.getAdapter().getItemCount();
             int lastVisibleItem = mLinearLayoutManager.findLastCompletelyVisibleItemPosition();
-            if (items > 0 && firstVisibleItem != 0)
-                if (lastVisibleItem == (mNavigationPresenter.getOffset() - 1))
+            if (items > 0 && firstVisibleItem != 0) {
+                if (lastVisibleItem == (mNavigationPresenter.getOffset() - 1)) {
                     mNavigationPresenter.receiveData();
+                }
+            }
         }
     };
 

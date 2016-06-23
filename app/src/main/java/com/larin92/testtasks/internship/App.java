@@ -10,9 +10,6 @@ import com.larin92.testtasks.internship.manager.DatabaseManager;
 
 import java.util.ArrayList;
 
-/**
- * Created by larin92 on 20.04.2016.
- */
 public class App extends Application {
 
     private static Context sContext;

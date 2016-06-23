@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +23,8 @@ import com.larin92.testtasks.internship.presenter.FacebookPresenter;
 
 import java.util.Arrays;
 import java.util.List;
+
+import timber.log.Timber;
 
 public class FacebookActivity extends AppCompatActivity implements FacebookContract.View {
 
@@ -117,9 +118,9 @@ public class FacebookActivity extends AppCompatActivity implements FacebookContr
         super.onDestroy();
         if (!(mProfile == null || mAccessToken == null)) {
             mFacebookPresenter.saveData(mProfile, mAccessToken);
-            Log.v(TAG, "profile saved");
+            Timber.d(TAG, "profile saved");
         } else
-            Log.v(TAG, "profile wasn't saved");
+            Timber.d(TAG, "profile wasn't saved");
         mFacebookPresenter.detachView();
     }
 

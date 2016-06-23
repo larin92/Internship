@@ -6,9 +6,6 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-/**
- * Created by larin92 on 19.04.2016.
- */
 public class CardModel extends RealmObject {
     public static final String STATE = "mStatus";
     public static final String ID = "id";
@@ -48,8 +45,9 @@ public class CardModel extends RealmObject {
     private static String ArrayToString(ArrayList<Integer> list) {
         String query = "";
         for (int i = 0; i < list.size(); i++) {
-            if (i > 0)
+            if (i > 0) {
                 query += ",";
+            }
             query += list.get(i);
         }
         return query;

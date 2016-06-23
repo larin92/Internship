@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="mock2">
-        <item>: Part 3</item>
-        <item>When supernova explodes, it shines brighter than the whole galaxy it was located in. Supernovas give birth to heavy elements, we&#8242;re all consist of. We&#8242;re all made of stars</item>
-        <item>Andromeda</item>
-        <item>185 A.D.</item>
-        <item>1885</item>
-        <item>2009</item>
-        <item>Who asks this stuff</item>
-    </string-array>
-</resources>
+<resources></resources>

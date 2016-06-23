@@ -52,10 +52,10 @@ public class Model {
     private String ticketId;
     @SerializedName("files")
     @Expose
-    private List<File> files = new ArrayList<File>();
+    private List<File> files = new ArrayList<>();
     @SerializedName("performers")
     @Expose
-    private List<Performer> performers = new ArrayList<Performer>();
+    private List<Performer> performers = new ArrayList<>();
     @SerializedName("deadline")
     @Expose
     private Integer deadline;
@@ -110,8 +110,9 @@ public class Model {
 
     public String getAddress() {
         String address = "";
-        if (geoAddress != null)
+        if (geoAddress != null) {
             address = geoAddress.getAddress();
+        }
         return address;
     }
 
@@ -288,10 +289,11 @@ public class Model {
 
     public RealmList<ImageModel> getFilesList() {
         RealmList<ImageModel> images = new RealmList<>();
-        if (files != null)
+        if (files != null) {
             for (int j = 0; j < files.size(); j++) {
                 images.add(new ImageModel(files.get(j).getFilename()));
             }
+        }
         return images;
     }
 
@@ -312,12 +314,14 @@ public class Model {
      */
     public String getPerformers() {
         String performersString = "";
-        if (performers != null)
+        if (performers != null) {
             for (int j = 0; j < performers.size(); j++) {
-                if (j > 0)
+                if (j > 0) {
                     performersString += ", ";
+                }
                 performersString += performers.get(j).getOrganization();
             }
+        }
         return performersString;
     }
 
@@ -350,8 +354,9 @@ public class Model {
     }
 
     private String format(Integer dateInt) {
-        if (dateInt == null)
+        if (dateInt == null) {
             return "";
+        }
         DateFormat formatter = new SimpleDateFormat(App.getContext()
                 .getString(R.string.date_pattern),
                 Locale.getDefault());

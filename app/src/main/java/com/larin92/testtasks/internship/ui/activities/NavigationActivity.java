@@ -18,10 +18,9 @@ import android.widget.Toast;
 
 import com.larin92.testtasks.internship.App;
 import com.larin92.testtasks.internship.R;
-import com.larin92.testtasks.internship.manager.DatabaseManager;
 import com.larin92.testtasks.internship.data.model.CardModel;
-import com.larin92.testtasks.internship.ui.fragments.NavigationFragment;
 import com.larin92.testtasks.internship.ui.adapters.CardsFragmentPagerAdapter;
+import com.larin92.testtasks.internship.ui.fragments.NavigationFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -83,7 +82,7 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     private void initDrawer() {
-        if (mNavigationView != null)
+        if (mNavigationView != null) {
             mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(MenuItem item) {
@@ -109,14 +108,16 @@ public class NavigationActivity extends AppCompatActivity
                     }
                 }
             });
+        }
     }
 
     @Override
     public void onListFragmentInteraction(final CardModel item) {
         Intent intent = new Intent(this, ItemActivity.class);
         intent.putExtra(CardModel.ID, item.getID());
-        if (item.getTitle() != null)
+        if (item.getTitle() != null) {
             intent.putExtra(CardModel.TITLE, item.getTitle());
+        }
         startActivity(intent);
         overridePendingTransition(R.anim.upslide_enter, R.anim.upslide_exit);
     }

@@ -101,38 +101,51 @@ public class ItemFragment extends Fragment implements ItemContract.View {
     @Override
     public void setData(CardModel cardModel) {
         if (cardModel != null) {
-            if (cardModel.getImages() != null && cardModel.getImages().size() > 0)
+            if (cardModel.getImages() != null && cardModel.getImages().size() > 0) {
                 for (int i = 0; i < cardModel.getImages().size(); i++)
                     mUrls.add(cardModel.getImages().get(i).getUrl());
+            }
             mCategory.setText(cardModel.getCategory());
 
             String status = getResources().getString(R.string.statusWut);
-            if (CardModel.STATE_INWORK.contains(cardModel.getStatus()))
+            if (CardModel.STATE_INWORK.contains(cardModel.getStatus())) {
                 status = getResources().getString(R.string.status0);
-            if (CardModel.STATE_DONE.contains(cardModel.getStatus()))
+            }
+            if (CardModel.STATE_DONE.contains(cardModel.getStatus())) {
                 status = getResources().getString(R.string.status1);
-            if (CardModel.STATE_WAITING.contains(cardModel.getStatus()))
+            }
+            if (CardModel.STATE_WAITING.contains(cardModel.getStatus())) {
                 status = getResources().getString(R.string.status2);
+            }
             mStatus.setText(status);
 
-            if (cardModel.getDateCreated() != null)
+            if (cardModel.getDateCreated() != null) {
                 mCreation.setText(cardModel.getDateCreated());
-            if (cardModel.getDateRegistered() != null)
+            }
+            if (cardModel.getDateRegistered() != null) {
                 mRegistration.setText(cardModel.getDateRegistered());
-            if (cardModel.getDateResolveTo() != null)
+            }
+            if (cardModel.getDateResolveTo() != null) {
                 mResolveTo.setText(cardModel.getDateResolveTo());
+            }
 
-            if (cardModel.getResponsible() != null)
+            if (cardModel.getResponsible() != null) {
                 mResponsible.setText(cardModel.getResponsible());
-            if (cardModel.getDescription() != null)
+            }
+            if (cardModel.getDescription() != null) {
                 mDescription.setText(cardModel.getDescription());
+            }
         }
         populateRecycler();
     }
 
     private void populateRecycler() {
-        if (mUrls == null) return;
-        if (mUrls.size() == 0) return;
+        if (mUrls == null) {
+            return;
+        }
+        if (mUrls.size() == 0) {
+            return;
+        }
         mRecycler.setLayoutManager(new LinearLayoutManager(sContext, RecyclerView.HORIZONTAL, false));
         ItemImageRecyclerAdapter adapter = new ItemImageRecyclerAdapter(sContext, mUrls);
         mRecycler.setAdapter(adapter);
