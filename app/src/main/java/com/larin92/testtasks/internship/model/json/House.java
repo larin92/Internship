@@ -1,9 +1,9 @@
-package com.larin92.testtasks.internship.data.model.json;
+package com.larin92.testtasks.internship.model.json;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class State {
+public class House {
 
     @SerializedName("id")
     @Expose
@@ -26,7 +26,7 @@ public class State {
         this.id = id;
     }
 
-    public State withId(Integer id) {
+    public House withId(Integer id) {
         this.id = id;
         return this;
     }
@@ -45,7 +45,7 @@ public class State {
         this.name = name;
     }
 
-    public State withName(String name) {
+    public House withName(String name) {
         this.name = name;
         return this;
     }

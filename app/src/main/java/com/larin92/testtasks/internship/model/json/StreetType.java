@@ -1,9 +1,9 @@
-package com.larin92.testtasks.internship.data.model.json;
+package com.larin92.testtasks.internship.model.json;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Type {
+public class StreetType {
 
     @SerializedName("id")
     @Expose
@@ -11,6 +11,9 @@ public class Type {
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("short_name")
+    @Expose
+    private String shortName;
 
     /**
      * @return The id
@@ -26,7 +29,7 @@ public class Type {
         this.id = id;
     }
 
-    public Type withId(Integer id) {
+    public StreetType withId(Integer id) {
         this.id = id;
         return this;
     }
@@ -45,8 +48,27 @@ public class Type {
         this.name = name;
     }
 
-    public Type withName(String name) {
+    public StreetType withName(String name) {
         this.name = name;
+        return this;
+    }
+
+    /**
+     * @return The shortName
+     */
+    public String getShortName() {
+        return shortName;
+    }
+
+    /**
+     * @param shortName The short_name
+     */
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public StreetType withShortName(String shortName) {
+        this.shortName = shortName;
         return this;
     }
 

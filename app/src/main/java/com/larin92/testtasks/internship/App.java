@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.facebook.FacebookSdk;
-import com.larin92.testtasks.internship.data.model.CardModel;
+import com.larin92.testtasks.internship.model.CardModel;
 import com.larin92.testtasks.internship.manager.ApiManager;
 import com.larin92.testtasks.internship.manager.DatabaseManager;
 

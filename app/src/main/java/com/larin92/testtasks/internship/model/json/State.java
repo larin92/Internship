@@ -1,9 +1,9 @@
-package com.larin92.testtasks.internship.data.model.json;
+package com.larin92.testtasks.internship.model.json;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Category {
+public class State {
 
     @SerializedName("id")
     @Expose
@@ -11,9 +11,6 @@ public class Category {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("image")
-    @Expose
-    private String image;
 
     /**
      * @return The id
@@ -29,7 +26,7 @@ public class Category {
         this.id = id;
     }
 
-    public Category withId(Integer id) {
+    public State withId(Integer id) {
         this.id = id;
         return this;
     }
@@ -48,27 +45,8 @@ public class Category {
         this.name = name;
     }
 
-    public Category withName(String name) {
+    public State withName(String name) {
         this.name = name;
-        return this;
-    }
-
-    /**
-     * @return The image
-     */
-    public String getImage() {
-        return image;
-    }
-
-    /**
-     * @param image The image
-     */
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public Category withImage(String image) {
-        this.image = image;
         return this;
     }
 

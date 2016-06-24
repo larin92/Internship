@@ -1,6 +1,6 @@
-package com.larin92.testtasks.internship.data;
+package com.larin92.testtasks.internship.api.services;
 
-import com.larin92.testtasks.internship.data.model.json.Model;
+import com.larin92.testtasks.internship.model.json.Model;
 
 import java.util.List;
 

@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.larin92.testtasks.internship.R;
-import com.larin92.testtasks.internship.data.model.CardModel;
+import com.larin92.testtasks.internship.model.CardModel;
 import com.larin92.testtasks.internship.ui.fragments.ItemFragment;
 import com.larin92.testtasks.internship.ui.stars.particlesys.ParticleSystemRenderer;
 import com.yalantis.starwars.TilesFrameLayout;
@@ -57,7 +57,8 @@ public class ItemActivity extends AppCompatActivity {
 
         backGroundStars();
 
-        showFragment();
+        if (savedInstanceState == null)
+            showFragment();
     }
 
     @Override
@@ -109,7 +110,6 @@ public class ItemActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
         mTilesFrameLayout.startAnimation();
     }
 

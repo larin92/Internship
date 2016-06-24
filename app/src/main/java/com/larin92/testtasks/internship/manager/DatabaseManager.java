@@ -1,8 +1,8 @@
 package com.larin92.testtasks.internship.manager;
 
 import com.larin92.testtasks.internship.App;
-import com.larin92.testtasks.internship.data.model.CardModel;
-import com.larin92.testtasks.internship.data.model.json.Model;
+import com.larin92.testtasks.internship.model.CardModel;
+import com.larin92.testtasks.internship.model.json.Model;
 
 import java.util.List;
 

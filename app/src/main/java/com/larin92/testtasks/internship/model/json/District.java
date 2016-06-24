@@ -1,9 +1,9 @@
-package com.larin92.testtasks.internship.data.model.json;
+package com.larin92.testtasks.internship.model.json;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Street {
+public class District {
 
     @SerializedName("id")
     @Expose
@@ -14,9 +14,6 @@ public class Street {
     @SerializedName("ru_name")
     @Expose
     private String ruName;
-    @SerializedName("street_type")
-    @Expose
-    private StreetType streetType;
 
     /**
      * @return The id
@@ -32,7 +29,7 @@ public class Street {
         this.id = id;
     }
 
-    public Street withId(Integer id) {
+    public District withId(Integer id) {
         this.id = id;
         return this;
     }
@@ -51,7 +48,7 @@ public class Street {
         this.name = name;
     }
 
-    public Street withName(String name) {
+    public District withName(String name) {
         this.name = name;
         return this;
     }
@@ -70,27 +67,8 @@ public class Street {
         this.ruName = ruName;
     }
 
-    public Street withRuName(String ruName) {
+    public District withRuName(String ruName) {
         this.ruName = ruName;
-        return this;
-    }
-
-    /**
-     * @return The streetType
-     */
-    public StreetType getStreetType() {
-        return streetType;
-    }
-
-    /**
-     * @param streetType The street_type
-     */
-    public void setStreetType(StreetType streetType) {
-        this.streetType = streetType;
-    }
-
-    public Street withStreetType(StreetType streetType) {
-        this.streetType = streetType;
         return this;
     }
 

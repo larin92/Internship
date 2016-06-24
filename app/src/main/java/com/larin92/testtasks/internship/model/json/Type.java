@@ -1,9 +1,9 @@
-package com.larin92.testtasks.internship.data.model.json;
+package com.larin92.testtasks.internship.model.json;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class District {
+public class Type {
 
     @SerializedName("id")
     @Expose
@@ -11,9 +11,6 @@ public class District {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("ru_name")
-    @Expose
-    private String ruName;
 
     /**
      * @return The id
@@ -29,7 +26,7 @@ public class District {
         this.id = id;
     }
 
-    public District withId(Integer id) {
+    public Type withId(Integer id) {
         this.id = id;
         return this;
     }
@@ -48,27 +45,8 @@ public class District {
         this.name = name;
     }
 
-    public District withName(String name) {
+    public Type withName(String name) {
         this.name = name;
-        return this;
-    }
-
-    /**
-     * @return The ruName
-     */
-    public String getRuName() {
-        return ruName;
-    }
-
-    /**
-     * @param ruName The ru_name
-     */
-    public void setRuName(String ruName) {
-        this.ruName = ruName;
-    }
-
-    public District withRuName(String ruName) {
-        this.ruName = ruName;
         return this;
     }
 

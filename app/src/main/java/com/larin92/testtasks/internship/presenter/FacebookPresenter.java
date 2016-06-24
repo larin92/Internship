@@ -4,7 +4,7 @@ import com.facebook.AccessToken;
 import com.facebook.Profile;
 import com.larin92.testtasks.internship.App;
 import com.larin92.testtasks.internship.contract.FacebookContract;
-import com.larin92.testtasks.internship.data.model.ProfileFB;
+import com.larin92.testtasks.internship.model.ProfileFB;
 
 public class FacebookPresenter implements FacebookContract.Presenter {
 

@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.larin92.testtasks.internship.R;
 import com.larin92.testtasks.internship.contract.ItemContract;
-import com.larin92.testtasks.internship.data.model.CardModel;
+import com.larin92.testtasks.internship.model.CardModel;
 import com.larin92.testtasks.internship.presenter.ItemPresenter;
 import com.larin92.testtasks.internship.ui.adapters.ItemImageRecyclerAdapter;
 

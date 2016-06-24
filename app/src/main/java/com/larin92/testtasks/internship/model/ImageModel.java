@@ -1,4 +1,4 @@
-package com.larin92.testtasks.internship.data.model;
+package com.larin92.testtasks.internship.model;
 
 import io.realm.RealmObject;
 

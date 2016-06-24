@@ -1,9 +1,9 @@
-package com.larin92.testtasks.internship.data.model.json;
+package com.larin92.testtasks.internship.model.json;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class StreetType {
+public class File {
 
     @SerializedName("id")
     @Expose
@@ -11,9 +11,9 @@ public class StreetType {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("short_name")
+    @SerializedName("filename")
     @Expose
-    private String shortName;
+    private String filename;
 
     /**
      * @return The id
@@ -29,7 +29,7 @@ public class StreetType {
         this.id = id;
     }
 
-    public StreetType withId(Integer id) {
+    public File withId(Integer id) {
         this.id = id;
         return this;
     }
@@ -48,27 +48,27 @@ public class StreetType {
         this.name = name;
     }
 
-    public StreetType withName(String name) {
+    public File withName(String name) {
         this.name = name;
         return this;
     }
 
     /**
-     * @return The shortName
+     * @return The filename
      */
-    public String getShortName() {
-        return shortName;
+    public String getFilename() {
+        return filename;
     }
 
     /**
-     * @param shortName The short_name
+     * @param filename The filename
      */
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
-    public StreetType withShortName(String shortName) {
-        this.shortName = shortName;
+    public File withFilename(String filename) {
+        this.filename = filename;
         return this;
     }
 

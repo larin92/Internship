@@ -1,10 +1,10 @@
-package com.larin92.testtasks.internship.data.model.json;
+package com.larin92.testtasks.internship.model.json;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.larin92.testtasks.internship.App;
 import com.larin92.testtasks.internship.R;
-import com.larin92.testtasks.internship.data.model.ImageModel;
+import com.larin92.testtasks.internship.model.ImageModel;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

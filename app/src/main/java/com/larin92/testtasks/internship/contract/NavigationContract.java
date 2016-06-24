@@ -2,7 +2,7 @@ package com.larin92.testtasks.internship.contract;
 
 import android.content.Context;
 
-import com.larin92.testtasks.internship.data.model.CardModel;
+import com.larin92.testtasks.internship.model.CardModel;
 
 import java.util.List;
 

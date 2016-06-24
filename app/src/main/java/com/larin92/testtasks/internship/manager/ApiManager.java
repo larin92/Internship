@@ -1,7 +1,8 @@
 package com.larin92.testtasks.internship.manager;
 
-import com.larin92.testtasks.internship.data.ApiService;
-import com.larin92.testtasks.internship.data.model.json.Model;
+import com.larin92.testtasks.internship.api.ApiSettings;
+import com.larin92.testtasks.internship.api.services.ApiService;
+import com.larin92.testtasks.internship.model.json.Model;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import rx.Observable;
 
 public class ApiManager implements Manager {
 
-    private final static String ENDPOINT = "http://dev-contact.yalantis.com/rest/v1/";
+
 
     private static volatile ApiService sApiService = null;
     private static final int sBatch = 20;
@@ -22,7 +23,7 @@ public class ApiManager implements Manager {
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(ENDPOINT)
+                .baseUrl(ApiSettings.SERVER)
                 .build();
         sApiService = retrofit.create(ApiService.class);
     }
@@ -37,7 +38,7 @@ public class ApiManager implements Manager {
     }
 
     public Observable<List<Model>> update(String status, int offset) {
-        return sApiService.getCards(status, offset + sBatch);
+        return sApiService.getCards(status, offset);
     }
 
     public Observable<List<Model>> getBatch(String status, int offset) {

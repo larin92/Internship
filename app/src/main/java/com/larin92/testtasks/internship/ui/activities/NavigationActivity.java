@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.larin92.testtasks.internship.App;
 import com.larin92.testtasks.internship.R;
-import com.larin92.testtasks.internship.data.model.CardModel;
+import com.larin92.testtasks.internship.model.CardModel;
 import com.larin92.testtasks.internship.ui.adapters.CardsFragmentPagerAdapter;
 import com.larin92.testtasks.internship.ui.fragments.NavigationFragment;
 

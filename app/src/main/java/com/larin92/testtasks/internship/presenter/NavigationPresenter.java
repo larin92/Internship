@@ -8,8 +8,8 @@ import android.widget.Toast;
 import com.larin92.testtasks.internship.App;
 import com.larin92.testtasks.internship.R;
 import com.larin92.testtasks.internship.contract.NavigationContract;
-import com.larin92.testtasks.internship.data.model.CardModel;
-import com.larin92.testtasks.internship.data.model.json.Model;
+import com.larin92.testtasks.internship.model.CardModel;
+import com.larin92.testtasks.internship.model.json.Model;
 
 import java.util.List;
 
@@ -21,7 +21,6 @@ import timber.log.Timber;
 
 public class NavigationPresenter implements NavigationContract.Presenter {
 
-    private static final String TAG = "NavigationPresenter";
     private CompositeSubscription mSubscription;
     private NavigationContract.View mView;
     private volatile int mOffset = 0;
@@ -88,7 +87,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
                     public void onNext(List<Model> models) {
                         App.getDatabaseManager().responseAdaption(models);
                         mOffset += models.size();
-                        Timber.d("onNext. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
+                        Timber.d("receiveData. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
                     }
                 }));
     }
