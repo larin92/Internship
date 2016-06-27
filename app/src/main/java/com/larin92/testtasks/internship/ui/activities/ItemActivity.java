@@ -57,8 +57,9 @@ public class ItemActivity extends AppCompatActivity {
 
         backGroundStars();
 
-        if (savedInstanceState == null)
+        if (savedInstanceState == null) {
             showFragment();
+        }
     }
 
     @Override

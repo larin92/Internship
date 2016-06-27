@@ -28,7 +28,6 @@ import timber.log.Timber;
 
 public class FacebookActivity extends AppCompatActivity implements FacebookContract.View {
 
-    private static final String TAG = "FacebookHere";
     private static final String urlStart = "https://graph.facebook.com/";
     private static final String urlEnd = "/picture?type=large";
 

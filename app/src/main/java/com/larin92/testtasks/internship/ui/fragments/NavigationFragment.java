@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.larin92.testtasks.internship.R;
 import com.larin92.testtasks.internship.contract.NavigationContract;
@@ -85,7 +84,6 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
         mNavigationPresenter = new NavigationPresenter(mTab);
         mNavigationPresenter.attachView(this);
         mNavigationPresenter.showBackup();
-        //mNavigationPresenter.receiveData(true);
         return view;
     }
 
@@ -133,18 +131,13 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
 
     @Override
     public void notifyAdapter(List<CardModel> list) {
-        Toast.makeText(getActivity(), "i'm notifying", Toast.LENGTH_SHORT).show();
         mRecyclerAdapter.addCards(list);
         mRecyclerAdapter.notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        if (mRecyclerAdapter != null) {
-            return mRecyclerAdapter.getItemCount();
-        } else {
-            return 0;
-        }
+        return (mRecyclerAdapter != null) ? mRecyclerAdapter.getItemCount() : 0;
     }
 
     //  if you will scroll via mouse scroll it won't work
@@ -158,13 +151,13 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
             super.onScrollStateChanged(recyclerView, newState);
             int firstVisibleItem = mLinearLayoutManager.findFirstCompletelyVisibleItemPosition();
             mPullToRefreshView.setEnabled(firstVisibleItem == 0);
-
             int items = mRecyclerView.getAdapter().getItemCount();
             int lastVisibleItem = mLinearLayoutManager.findLastCompletelyVisibleItemPosition();
-            if (items > 0 && firstVisibleItem != 0) {
-                if (lastVisibleItem == (mNavigationPresenter.getOffset() - 1)) {
-                    mNavigationPresenter.receiveData();
-                }
+            if (items > 0 && firstVisibleItem != 0 && (lastVisibleItem == items - 1)) {
+                mNavigationPresenter.receiveData();
+            }
+            if (items > lastVisibleItem + 2) {
+                mRecyclerAdapter.notifyDataSetChanged();
             }
         }
     };

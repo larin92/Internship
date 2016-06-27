@@ -110,11 +110,9 @@ public class ItemFragment extends Fragment implements ItemContract.View {
             String status = getResources().getString(R.string.statusWut);
             if (CardModel.STATE_INWORK.contains(cardModel.getStatus())) {
                 status = getResources().getString(R.string.status0);
-            }
-            if (CardModel.STATE_DONE.contains(cardModel.getStatus())) {
+            } else if (CardModel.STATE_DONE.contains(cardModel.getStatus())) {
                 status = getResources().getString(R.string.status1);
-            }
-            if (CardModel.STATE_WAITING.contains(cardModel.getStatus())) {
+            } else if (CardModel.STATE_WAITING.contains(cardModel.getStatus())) {
                 status = getResources().getString(R.string.status2);
             }
             mStatus.setText(status);
@@ -140,10 +138,7 @@ public class ItemFragment extends Fragment implements ItemContract.View {
     }
 
     private void populateRecycler() {
-        if (mUrls == null) {
-            return;
-        }
-        if (mUrls.size() == 0) {
+        if (mUrls == null || mUrls.isEmpty()) {
             return;
         }
         mRecycler.setLayoutManager(new LinearLayoutManager(sContext, RecyclerView.HORIZONTAL, false));

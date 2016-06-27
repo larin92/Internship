@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import io.realm.RealmList;
 
@@ -109,11 +110,7 @@ public class Model {
     }
 
     public String getAddress() {
-        String address = "";
-        if (geoAddress != null) {
-            address = geoAddress.getAddress();
-        }
-        return address;
+        return (geoAddress != null) ? geoAddress.getAddress() : "";
     }
 
     /**
@@ -358,9 +355,8 @@ public class Model {
             return "";
         }
         DateFormat formatter = new SimpleDateFormat(App.getContext()
-                .getString(R.string.date_pattern),
-                Locale.getDefault());
-        Date date = new Date(dateInt);
+                .getString(R.string.date_pattern), Locale.getDefault());
+        Date date = new Date(TimeUnit.SECONDS.toMillis(dateInt));
 
         return formatter.format(date);
     }

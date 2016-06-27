@@ -23,6 +23,8 @@
                 android:id="@+id/item_category"
                 style="@style/title"
                 android:layout_centerVertical="true"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:text="@string/title" />
 
             <TextView

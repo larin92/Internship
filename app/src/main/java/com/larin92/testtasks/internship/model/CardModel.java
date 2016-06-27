@@ -43,14 +43,12 @@ public class CardModel extends RealmObject {
     }
 
     private static String ArrayToString(ArrayList<Integer> list) {
-        String query = "";
+        StringBuilder query = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
-            if (i > 0) {
-                query += ",";
-            }
-            query += list.get(i);
+            query.append(list.get(i));
+            query.append(",");
         }
-        return query;
+        return query.toString();
     }
 
 

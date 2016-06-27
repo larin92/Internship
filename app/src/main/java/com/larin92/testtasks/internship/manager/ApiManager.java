@@ -15,8 +15,7 @@ import rx.Observable;
 public class ApiManager implements Manager {
 
 
-
-    private static volatile ApiService sApiService = null;
+    private static volatile ApiService sApiService;
     private static final int sBatch = 20;
 
     static {
@@ -38,7 +37,7 @@ public class ApiManager implements Manager {
     }
 
     public Observable<List<Model>> update(String status, int offset) {
-        return sApiService.getCards(status, offset);
+        return sApiService.getCards(status, sBatch + offset);
     }
 
     public Observable<List<Model>> getBatch(String status, int offset) {

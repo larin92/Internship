@@ -12,7 +12,7 @@ import io.realm.RealmObject;
 
 public class DatabaseManager implements Manager {
 
-    private static volatile Realm sRealm = null;
+    private static volatile Realm sRealm;
 
     static {
         RealmConfiguration realmConfig = new RealmConfiguration.Builder(App.getContext())
@@ -37,19 +37,19 @@ public class DatabaseManager implements Manager {
 
     public List<CardModel> getQuery(String query) {
 
-        if (query.equals(CardModel.QUERY_INWORK)) {
+        if (CardModel.QUERY_INWORK.equals(query)) {
             return getInWork();
         }
 
-        if (query.equals(CardModel.QUERY_DONE)) {
+        if (CardModel.QUERY_DONE.equals(query)) {
             return getDone();
         }
 
-        if (query.equals(CardModel.QUERY_WAITING)) {
+        if (CardModel.QUERY_WAITING.equals(query)) {
             return getWaiting();
         }
 
-        return getDone();
+        throw new IllegalArgumentException("query isn't matching known statuses");
     }
 
     public List<CardModel> getInWork() {

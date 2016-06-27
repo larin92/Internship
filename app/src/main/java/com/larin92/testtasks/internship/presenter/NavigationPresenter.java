@@ -23,7 +23,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
 
     private CompositeSubscription mSubscription;
     private NavigationContract.View mView;
-    private volatile int mOffset = 0;
+    private volatile int mOffset;
     private final String mQuery;
 
     public NavigationPresenter(int tab) {

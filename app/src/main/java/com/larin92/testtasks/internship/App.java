@@ -4,9 +4,9 @@ import android.app.Application;
 import android.content.Context;
 
 import com.facebook.FacebookSdk;
-import com.larin92.testtasks.internship.model.CardModel;
 import com.larin92.testtasks.internship.manager.ApiManager;
 import com.larin92.testtasks.internship.manager.DatabaseManager;
+import com.larin92.testtasks.internship.model.CardModel;
 
 import java.util.ArrayList;
 
@@ -15,8 +15,8 @@ import timber.log.Timber;
 public class App extends Application {
 
     private static Context sContext;
-    private static volatile ApiManager sApiManager = null;
-    private static volatile DatabaseManager sDataManager = null;
+    private static volatile ApiManager sApiManager;
+    private static volatile DatabaseManager sDataManager;
 
     @Override
     public void onCreate() {
