@@ -40,8 +40,8 @@ public class FacebookActivity extends AppCompatActivity implements FacebookContr
     private ProfileTracker mProfileTracker;
 
     private FacebookPresenter mFacebookPresenter;
-    private Profile mProfile = null;
-    private AccessToken mAccessToken = null;
+    private Profile mProfile;
+    private AccessToken mAccessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
