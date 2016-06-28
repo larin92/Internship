@@ -310,16 +310,7 @@ public class Model {
      * @return The performers
      */
     public String getPerformers() {
-        String performersString = "";
-        if (performers != null) {
-            for (int j = 0; j < performers.size(); j++) {
-                if (j > 0) {
-                    performersString += ", ";
-                }
-                performersString += performers.get(j).getOrganization();
-            }
-        }
-        return performersString;
+        return (performers != null && performers.size() > 0) ? performers.get(0).getOrganization() : "";
     }
 
     /**

@@ -26,7 +26,7 @@ import butterknife.Unbinder;
 
 public class ItemActivity extends AppCompatActivity {
 
-    final static int FRAGMENT_DELAY = 500;
+    static final int FRAGMENT_DELAY = 500;
 
     private Unbinder mUnbinder;
     private MediaPlayer mp;

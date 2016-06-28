@@ -41,11 +41,11 @@ public class DatabaseManager implements Manager {
             return getInWork();
         }
 
-        if (CardModel.QUERY_DONE.equals(query)) {
+        else if (CardModel.QUERY_DONE.equals(query)) {
             return getDone();
         }
 
-        if (CardModel.QUERY_WAITING.equals(query)) {
+        else if (CardModel.QUERY_WAITING.equals(query)) {
             return getWaiting();
         }
 
@@ -77,6 +77,48 @@ public class DatabaseManager implements Manager {
                 .findAll();
     }
 
+    public int getCount(String query) {
+
+        if (CardModel.QUERY_INWORK.equals(query)) {
+            return (int)getInWorkCount();
+        }
+
+        else if (CardModel.QUERY_DONE.equals(query)) {
+            return (int)getDoneCount();
+        }
+
+        else if (CardModel.QUERY_WAITING.equals(query)) {
+            return (int)getWaitingCount();
+        }
+
+        throw new IllegalArgumentException("query isn't matching known statuses");
+    }
+
+    public long getInWorkCount() {
+        return sRealm.where(CardModel.class)
+                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(0)).or()
+                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(1)).or()
+                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(2)).or()
+                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(3)).or()
+                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(4)).or()
+                .count();
+    }
+
+    public long getDoneCount() {
+        return sRealm.where(CardModel.class)
+                .equalTo(CardModel.STATE, CardModel.STATE_DONE.get(0)).or()
+                .equalTo(CardModel.STATE, CardModel.STATE_DONE.get(1)).or()
+                .count();
+    }
+
+    public long getWaitingCount() {
+        return sRealm.where(CardModel.class)
+                .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(0)).or()
+                .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(1)).or()
+                .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(2)).or()
+                .count();
+    }
+
     public void responseAdaption(List<Model> response) {
         for (int i = 0; i < response.size(); i++) {
             Model model = response.get(i);
@@ -92,6 +134,7 @@ public class DatabaseManager implements Manager {
                     .setDaysLeft(model.getDaysLeft())
                     .setLikes(model.getLikesCounter())
                     .setStatus(model.getState().getId())
+                    .setStatusName(model.getState().getName())
                     .setTitle(model.getTitle())
                     .setImages(model.getFilesList())
                     .setResponsible(model.getPerformers())

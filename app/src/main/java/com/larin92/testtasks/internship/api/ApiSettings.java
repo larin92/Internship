@@ -9,7 +9,7 @@ public class ApiSettings {
 
     private static final String HOSTNAME = "dev-contact.yalantis.com/";
 
-    private final static String ENDPOINT = "rest/v1/";
+    private static final String ENDPOINT = "rest/v1/";
 
     public static final String SERVER = SCHEME + HOSTNAME + ENDPOINT;
 }

@@ -201,7 +201,6 @@ public class NavigationFragment extends Fragment implements NavigationContract.V
         mNavigationPresenter.detachView();
         mUnbinder.unbind();
         mRecyclerAdapter = null;
-        mLinearLayoutManager = null;
     }
 
     /**

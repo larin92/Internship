@@ -46,7 +46,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
     @Override
     public void attachView(NavigationContract.View view) {
         mSubscription = new CompositeSubscription();
-        mOffset = App.getDatabaseManager().getQuery(mQuery).size();
+        mOffset = App.getDatabaseManager().getCount(mQuery);
         Timber.d("attachView. Query is: " + mQuery + ". Offset is: " + String.valueOf(mOffset));
         mView = view;
     }
@@ -127,7 +127,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
 
     @Override
     public void showBackup() {
-        int size = App.getDatabaseManager().getQuery(mQuery).size();
+        int size = App.getDatabaseManager().getCount(mQuery);
         if (size == 0) {
             Timber.d("showBackup():Q isEmpty)");
             receiveData();
@@ -139,7 +139,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
             mView.setData(App.getDatabaseManager().getQuery(mQuery));
         }
 
-        if (mView.getItemCount() < size) {
+        else if (mView.getItemCount() < size) {
             Timber.d("showbackup() notify");
             mView.notifyAdapter(App.getDatabaseManager().getQuery(mQuery));
         }

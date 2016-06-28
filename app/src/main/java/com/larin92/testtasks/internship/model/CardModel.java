@@ -1,6 +1,7 @@
 package com.larin92.testtasks.internship.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -14,9 +15,9 @@ public class CardModel extends RealmObject {
     public static String QUERY_DONE;
     public static String QUERY_WAITING;
     public static final String QUERY_ALL = QUERY_INWORK + "," + QUERY_DONE + "," + QUERY_WAITING;
-    public static ArrayList<Integer> STATE_INWORK = new ArrayList<>();
-    public static ArrayList<Integer> STATE_DONE = new ArrayList<>();
-    public static ArrayList<Integer> STATE_WAITING = new ArrayList<>();
+    public static List<Integer> STATE_INWORK = new ArrayList<>();
+    public static List<Integer> STATE_DONE = new ArrayList<>();
+    public static List<Integer> STATE_WAITING = new ArrayList<>();
 
     @PrimaryKey
     private int id;
@@ -29,6 +30,7 @@ public class CardModel extends RealmObject {
     private String mDaysLeft;
     private int mLikes;
     private int mStatus;
+    private String mStatusName;
     private String mTitle;
     private RealmList<ImageModel> mImages;
     private String mResponsible;
@@ -42,12 +44,14 @@ public class CardModel extends RealmObject {
         QUERY_WAITING = ArrayToString(WAITING);
     }
 
-    private static String ArrayToString(ArrayList<Integer> list) {
+    private static String ArrayToString(List<Integer> list) {
         StringBuilder query = new StringBuilder();
-        for (int i = 0; i < list.size(); i++) {
+        int size = list.size();
+        for (int i = 0; i < size - 1; i++) {
             query.append(list.get(i));
             query.append(",");
         }
+        query.append(list.get(size - 1));
         return query.toString();
     }
 
@@ -118,6 +122,11 @@ public class CardModel extends RealmObject {
             return this;
         }
 
+        public Builder setStatusName(String statusName) {
+            CardModel.this.mStatusName = statusName;
+            return this;
+        }
+
         public Builder setImages(RealmList<ImageModel> images) {
             CardModel.this.mImages = images;
             return this;
@@ -132,22 +141,6 @@ public class CardModel extends RealmObject {
             CardModel.this.mTitle = title;
             return this;
         }
-    }
-
-    public CardModel(int id, String category, String description, String address, String dateCreated, String dateRegistered, String dateResolveTo, int likes, int status, RealmList<ImageModel> images, String responsible, String daysLeft, String title) {
-        this.id = id;
-        mCategory = category;
-        mDescription = description;
-        mAddress = address;
-        mDateCreated = dateCreated;
-        mDateRegistered = dateRegistered;
-        mDateResolveTo = dateResolveTo;
-        mLikes = likes;
-        mStatus = status;
-        mImages = images;
-        mResponsible = responsible;
-        mDaysLeft = daysLeft;
-        mTitle = title;
     }
 
     //  setters to use in future
@@ -233,6 +226,14 @@ public class CardModel extends RealmObject {
 
     public void setStatus(int mStatus) {
         this.mStatus = mStatus;
+    }
+
+    public String getStatusName() {
+        return mStatusName;
+    }
+
+    public void setStatusName(String mStatusName) {
+        this.mStatusName = mStatusName;
     }
 
     public RealmList<ImageModel> getImages() {
