@@ -48,13 +48,13 @@ public class Holder extends RecyclerView.ViewHolder {
         mDescription.setText(cardModel.getDescription());
         mAddress.setText(cardModel.getAddress());
 
-        if (CardModel.STATE_DONE.contains(cardModel.getStatus())) {
+        if (CardModel.sStateDone.contains(cardModel.getStatus())) {
             mDate.setText(cardModel.getDateResolveTo());
         } else {
             mDate.setText(cardModel.getDateCreated());
         }
 
-        if (CardModel.STATE_INWORK.contains(cardModel.getStatus())) {
+        if (CardModel.sStateInWork.contains(cardModel.getStatus())) {
             String daysLeft = cardModel.getDaysLeft() + " " + mContext.getResources().getString(R.string.days);
             mDaysLeft.setText(daysLeft);
         }

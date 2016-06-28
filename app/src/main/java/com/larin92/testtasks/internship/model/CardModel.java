@@ -11,13 +11,12 @@ public class CardModel extends RealmObject {
     public static final String STATE = "mStatus";
     public static final String ID = "id";
     public static final String TITLE = "title";
-    public static String QUERY_INWORK;
-    public static String QUERY_DONE;
-    public static String QUERY_WAITING;
-    public static final String QUERY_ALL = QUERY_INWORK + "," + QUERY_DONE + "," + QUERY_WAITING;
-    public static List<Integer> STATE_INWORK = new ArrayList<>();
-    public static List<Integer> STATE_DONE = new ArrayList<>();
-    public static List<Integer> STATE_WAITING = new ArrayList<>();
+    public static String sQueryInWork;
+    public static String sQueryDone;
+    public static String sQueryWaiting;
+    public static List<Integer> sStateInWork = new ArrayList<>();
+    public static List<Integer> sStateDone = new ArrayList<>();
+    public static List<Integer> sStateWaiting = new ArrayList<>();
 
     @PrimaryKey
     private int id;
@@ -35,13 +34,13 @@ public class CardModel extends RealmObject {
     private RealmList<ImageModel> mImages;
     private String mResponsible;
 
-    public static void initQueries(ArrayList<Integer> INWORK, ArrayList<Integer> DONE, ArrayList<Integer> WAITING) {
-        STATE_INWORK.addAll(INWORK);
-        STATE_DONE.addAll(DONE);
-        STATE_WAITING.addAll(WAITING);
-        QUERY_INWORK = ArrayToString(INWORK);
-        QUERY_DONE = ArrayToString(DONE);
-        QUERY_WAITING = ArrayToString(WAITING);
+    public static void initQueries(List<Integer> inWork, List<Integer> done, List<Integer> waiting) {
+        sStateInWork.addAll(inWork);
+        sStateDone.addAll(done);
+        sStateWaiting.addAll(waiting);
+        sQueryInWork = ArrayToString(inWork);
+        sQueryDone = ArrayToString(done);
+        sQueryWaiting = ArrayToString(waiting);
     }
 
     private static String ArrayToString(List<Integer> list) {

@@ -9,6 +9,7 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
+import timber.log.Timber;
 
 public class DatabaseManager implements Manager {
 
@@ -36,16 +37,16 @@ public class DatabaseManager implements Manager {
     }
 
     public List<CardModel> getQuery(String query) {
-
-        if (CardModel.QUERY_INWORK.equals(query)) {
+        Timber.d("QUERY(database):" + query);
+        if (CardModel.sQueryInWork.equals(query)) {
             return getInWork();
         }
 
-        else if (CardModel.QUERY_DONE.equals(query)) {
+        else if (CardModel.sQueryDone.equals(query)) {
             return getDone();
         }
 
-        else if (CardModel.QUERY_WAITING.equals(query)) {
+        else if (CardModel.sQueryWaiting.equals(query)) {
             return getWaiting();
         }
 
@@ -54,40 +55,39 @@ public class DatabaseManager implements Manager {
 
     public List<CardModel> getInWork() {
         return sRealm.where(CardModel.class)
-                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(0)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(1)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(2)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(3)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(4)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateInWork.get(0)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateInWork.get(1)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateInWork.get(2)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateInWork.get(3)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateInWork.get(4)).or()
                 .findAll();
     }
 
     public List<CardModel> getDone() {
         return sRealm.where(CardModel.class)
-                .equalTo(CardModel.STATE, CardModel.STATE_DONE.get(0)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_DONE.get(1)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateDone.get(0)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateDone.get(1)).or()
                 .findAll();
     }
 
     public List<CardModel> getWaiting() {
         return sRealm.where(CardModel.class)
-                .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(0)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(1)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(2)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateWaiting.get(0)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateWaiting.get(1)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateWaiting.get(2)).or()
                 .findAll();
     }
 
     public int getCount(String query) {
-
-        if (CardModel.QUERY_INWORK.equals(query)) {
+        if (CardModel.sQueryInWork.equals(query)) {
             return (int)getInWorkCount();
         }
 
-        else if (CardModel.QUERY_DONE.equals(query)) {
+        else if (CardModel.sQueryDone.equals(query)) {
             return (int)getDoneCount();
         }
 
-        else if (CardModel.QUERY_WAITING.equals(query)) {
+        else if (CardModel.sQueryWaiting.equals(query)) {
             return (int)getWaitingCount();
         }
 
@@ -96,26 +96,26 @@ public class DatabaseManager implements Manager {
 
     public long getInWorkCount() {
         return sRealm.where(CardModel.class)
-                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(0)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(1)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(2)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(3)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_INWORK.get(4)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateInWork.get(0)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateInWork.get(1)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateInWork.get(2)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateInWork.get(3)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateInWork.get(4)).or()
                 .count();
     }
 
     public long getDoneCount() {
         return sRealm.where(CardModel.class)
-                .equalTo(CardModel.STATE, CardModel.STATE_DONE.get(0)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_DONE.get(1)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateDone.get(0)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateDone.get(1)).or()
                 .count();
     }
 
     public long getWaitingCount() {
         return sRealm.where(CardModel.class)
-                .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(0)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(1)).or()
-                .equalTo(CardModel.STATE, CardModel.STATE_WAITING.get(2)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateWaiting.get(0)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateWaiting.get(1)).or()
+                .equalTo(CardModel.STATE, CardModel.sStateWaiting.get(2)).or()
                 .count();
     }
 

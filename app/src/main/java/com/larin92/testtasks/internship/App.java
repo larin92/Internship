@@ -9,6 +9,7 @@ import com.larin92.testtasks.internship.manager.DatabaseManager;
 import com.larin92.testtasks.internship.model.CardModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import timber.log.Timber;
 
@@ -44,8 +45,8 @@ public class App extends Application {
         return sDataManager;
     }
 
-    private ArrayList<Integer> getInWorkQuery() {
-        ArrayList<Integer> queries = new ArrayList<>();
+    private List<Integer> getInWorkQuery() {
+        List<Integer> queries = new ArrayList<>();
         queries.add(0);
         queries.add(9);
         queries.add(5);
@@ -54,15 +55,15 @@ public class App extends Application {
         return queries;
     }
 
-    private ArrayList<Integer> getDoneQuery() {
-        ArrayList<Integer> queries = new ArrayList<>();
+    private List<Integer> getDoneQuery() {
+        List<Integer> queries = new ArrayList<>();
         queries.add(10);
         queries.add(6);
         return queries;
     }
 
-    private ArrayList<Integer> getWaitingQuery() {
-        ArrayList<Integer> queries = new ArrayList<>();
+    private List<Integer> getWaitingQuery() {
+        List<Integer> queries = new ArrayList<>();
         queries.add(1);
         queries.add(3);
         queries.add(4);

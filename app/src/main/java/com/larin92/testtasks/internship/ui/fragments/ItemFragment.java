@@ -108,11 +108,11 @@ public class ItemFragment extends Fragment implements ItemContract.View {
             mCategory.setText(cardModel.getCategory());
 
             String status = getResources().getString(R.string.statusWut);
-            if (CardModel.STATE_INWORK.contains(cardModel.getStatus())) {
+            if (CardModel.sStateInWork.contains(cardModel.getStatus())) {
                 status = getResources().getString(R.string.status0);
-            } else if (CardModel.STATE_DONE.contains(cardModel.getStatus())) {
+            } else if (CardModel.sStateDone.contains(cardModel.getStatus())) {
                 status = getResources().getString(R.string.status1);
-            } else if (CardModel.STATE_WAITING.contains(cardModel.getStatus())) {
+            } else if (CardModel.sStateWaiting.contains(cardModel.getStatus())) {
                 status = getResources().getString(R.string.status2);
             }
             mStatus.setText(status);

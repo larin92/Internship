@@ -29,18 +29,19 @@ public class NavigationPresenter implements NavigationContract.Presenter {
     public NavigationPresenter(int tab) {
         switch (tab) {
             case 0:
-                mQuery = CardModel.QUERY_INWORK;
+                mQuery = CardModel.sQueryInWork;
                 break;
             case 1:
-                mQuery = CardModel.QUERY_DONE;
+                mQuery = CardModel.sQueryDone;
                 break;
             case 2:
-                mQuery = CardModel.QUERY_WAITING;
+                mQuery = CardModel.sQueryWaiting;
                 break;
             default:
-                mQuery = CardModel.QUERY_DONE;
+                mQuery = "";
                 break;
         }
+        Timber.d("QUERY(constructor):" + mQuery);
     }
 
     @Override
