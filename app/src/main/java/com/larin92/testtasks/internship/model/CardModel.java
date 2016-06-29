@@ -38,12 +38,12 @@ public class CardModel extends RealmObject {
         sStateInWork.addAll(inWork);
         sStateDone.addAll(done);
         sStateWaiting.addAll(waiting);
-        sQueryInWork = ArrayToString(inWork);
-        sQueryDone = ArrayToString(done);
-        sQueryWaiting = ArrayToString(waiting);
+        sQueryInWork = arrayToString(inWork);
+        sQueryDone = arrayToString(done);
+        sQueryWaiting = arrayToString(waiting);
     }
 
-    private static String ArrayToString(List<Integer> list) {
+    private static String arrayToString(List<Integer> list) {
         StringBuilder query = new StringBuilder();
         int size = list.size();
         for (int i = 0; i < size - 1; i++) {

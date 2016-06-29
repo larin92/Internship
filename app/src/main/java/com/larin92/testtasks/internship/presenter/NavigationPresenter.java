@@ -138,9 +138,7 @@ public class NavigationPresenter implements NavigationContract.Presenter {
         if (mView.getItemCount() == 0) {
             Timber.d("showbackup() setdata");
             mView.setData(App.getDatabaseManager().getQuery(mQuery));
-        }
-
-        else if (mView.getItemCount() < size) {
+        } else if (mView.getItemCount() < size) {
             Timber.d("showbackup() notify");
             mView.notifyAdapter(App.getDatabaseManager().getQuery(mQuery));
         }

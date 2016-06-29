@@ -40,13 +40,9 @@ public class DatabaseManager implements Manager {
         Timber.d("QUERY(database):" + query);
         if (CardModel.sQueryInWork.equals(query)) {
             return getInWork();
-        }
-
-        else if (CardModel.sQueryDone.equals(query)) {
+        } else if (CardModel.sQueryDone.equals(query)) {
             return getDone();
-        }
-
-        else if (CardModel.sQueryWaiting.equals(query)) {
+        } else if (CardModel.sQueryWaiting.equals(query)) {
             return getWaiting();
         }
 
@@ -81,13 +77,9 @@ public class DatabaseManager implements Manager {
     public int getCount(String query) {
         if (CardModel.sQueryInWork.equals(query)) {
             return (int)getInWorkCount();
-        }
-
-        else if (CardModel.sQueryDone.equals(query)) {
+        } else if (CardModel.sQueryDone.equals(query)) {
             return (int)getDoneCount();
-        }
-
-        else if (CardModel.sQueryWaiting.equals(query)) {
+        } else if (CardModel.sQueryWaiting.equals(query)) {
             return (int)getWaitingCount();
         }
 

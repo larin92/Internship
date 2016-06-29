@@ -120,9 +120,11 @@ public class ItemFragment extends Fragment implements ItemContract.View {
             if (cardModel.getDateCreated() != null) {
                 mCreation.setText(cardModel.getDateCreated());
             }
+
             if (cardModel.getDateRegistered() != null) {
                 mRegistration.setText(cardModel.getDateRegistered());
             }
+
             if (cardModel.getDateResolveTo() != null) {
                 mResolveTo.setText(cardModel.getDateResolveTo());
             }
@@ -130,6 +132,7 @@ public class ItemFragment extends Fragment implements ItemContract.View {
             if (cardModel.getResponsible() != null) {
                 mResponsible.setText(cardModel.getResponsible());
             }
+
             if (cardModel.getDescription() != null) {
                 mDescription.setText(cardModel.getDescription());
             }
