@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/nav_content_padding"
-        tools:context=".ui.NavigationFragment">
+        tools:context=".ui.fragments.NavigationFragment">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_cards"

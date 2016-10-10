@@ -2,9 +2,9 @@ package com.larin92.testtasks.internship.presenter;
 
 import android.content.Intent;
 
+import com.larin92.testtasks.internship.App;
 import com.larin92.testtasks.internship.contract.ItemContract;
-import com.larin92.testtasks.internship.data.Database;
-import com.larin92.testtasks.internship.data.model.CardModel;
+import com.larin92.testtasks.internship.model.CardModel;
 
 public class ItemPresenter implements ItemContract.Presenter {
 
@@ -23,7 +23,7 @@ public class ItemPresenter implements ItemContract.Presenter {
     @Override
     public void receiveData(Intent intent) {
         int id = intent.getIntExtra(CardModel.ID, 0);
-        CardModel cardModel = Database.please().findById(id);
+        CardModel cardModel = App.getDatabaseManager().findById(id);
         mView.setData(cardModel);
     }
 }

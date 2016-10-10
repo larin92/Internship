@@ -7,14 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.larin92.testtasks.internship.R;
-import com.larin92.testtasks.internship.data.model.CardModel;
-import com.larin92.testtasks.internship.ui.NavigationFragment;
+import com.larin92.testtasks.internship.model.CardModel;
+import com.larin92.testtasks.internship.ui.fragments.NavigationFragment;
 
 import java.util.List;
 
-/**
- * Created by larin92 on 18.04.2016.
- */
 public class CardsRecyclerAdapter extends RecyclerView.Adapter<Holder> {
 
     private final NavigationFragment.OnListFragmentInteractionListener mListener;

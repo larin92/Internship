@@ -6,11 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.larin92.testtasks.internship.R;
-import com.larin92.testtasks.internship.ui.NavigationFragment;
+import com.larin92.testtasks.internship.ui.fragments.NavigationFragment;
 
-/**
- * Created by larin92 on 18.04.2016.
- */
 public class CardsFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private Context mContext;

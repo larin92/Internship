@@ -8,15 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.larin92.testtasks.internship.R;
-import com.larin92.testtasks.internship.data.model.CardModel;
-import com.larin92.testtasks.internship.ui.NavigationFragment;
+import com.larin92.testtasks.internship.model.CardModel;
+import com.larin92.testtasks.internship.ui.fragments.NavigationFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by larin92 on 21.04.2016.
- */
 public class Holder extends RecyclerView.ViewHolder {
     @BindView(R.id.card)
     CardView mCardView;
@@ -51,12 +48,13 @@ public class Holder extends RecyclerView.ViewHolder {
         mDescription.setText(cardModel.getDescription());
         mAddress.setText(cardModel.getAddress());
 
-        if (CardModel.STATE_DONE.contains(cardModel.getStatus()))
+        if (CardModel.sStateDone.contains(cardModel.getStatus())) {
             mDate.setText(cardModel.getDateResolveTo());
-        else
+        } else {
             mDate.setText(cardModel.getDateCreated());
+        }
 
-        if (CardModel.STATE_INWORK.contains(cardModel.getStatus())) {
+        if (CardModel.sStateInWork.contains(cardModel.getStatus())) {
             String daysLeft = cardModel.getDaysLeft() + " " + mContext.getResources().getString(R.string.days);
             mDaysLeft.setText(daysLeft);
         }

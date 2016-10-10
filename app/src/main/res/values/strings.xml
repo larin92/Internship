@@ -18,23 +18,15 @@
     <string name="fourth">Responsible</string>
     <string name="fourth_a"></string>
     <string name="description"></string>
-    <string name="title_activity_navigation">NavigationActivity</string>
     <string name="date_pattern" translatable="false">MMM. dd, yyyy</string>
 
     <string name="nav_header">e-contact</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="days">days</string>
 
     <string name="all_queries">All queries</string>
     <string name="map">Map</string>
     <string name="log_in">Log in</string>
     <string name="inDevelopment">This feature is currently in the development</string>
-
-    <string name="mockTitle">Some juicy Astrophysics</string>
-    <string name="mockCategory0">Black Hole</string>
-    <string name="mockCategory1">Neutron Star</string>
-    <string name="mockCategory2">Supernova Explosion</string>
 
     <string name="title_activity_facebook">FacebookActivity</string>
     <string name="fbError">Login attempt failed.</string>
